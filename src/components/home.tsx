@@ -2,8 +2,45 @@ import { Center, WrapItem } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
+import { useState } from "react";
 
 export const Home = () => {
+  const [DryBreakCountLeft, setDryBreakCountLeft] = useState(0);
+  const [DryBreakCountRight, setDryBreakCountRight] = useState(0);
+
+  const [ScratchLeft, setScratchLeft] = useState(0);
+  const [ScratchRight, setScratchRight] = useState(0);
+
+  const incrementDryBreakCountLeft = () => {
+    setDryBreakCountLeft(DryBreakCountLeft + 1);
+  };
+  const decrementDryBreakCountLeft = () => {
+    setDryBreakCountLeft(DryBreakCountLeft - 1);
+  };
+
+  const incrementDryBreakCountRight = () => {
+    setDryBreakCountRight(DryBreakCountRight + 1);
+  };
+  const decrementDryBreakCountRight = () => {
+    setDryBreakCountRight(DryBreakCountRight - 1);
+  };
+
+  const incrementScratchLeft = () => {
+    setScratchLeft(ScratchLeft + 1);
+  };
+
+  const decrementScratchLeft = () => {
+    setScratchLeft(ScratchLeft - 1);
+  };
+
+  const incrementScratchRight = () => {
+    setScratchRight(ScratchRight + 1);
+  };
+
+  const decrementScratchRight = () => {
+    setScratchRight(ScratchRight - 1);
+  };
+
   const vvv = css`
     background-color: rgba(131, 234, 22, 0.2);
     overflow: hidden;
@@ -77,29 +114,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementDryBreakCountLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button
+                onClick={incrementDryBreakCountLeft}
+                css={button}
+                colorScheme="whatsapp"
+              >
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
+            <ENumber>{DryBreakCountLeft}</ENumber>
             <ETextBox>
               <ETextline>Dry breaks</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{DryBreakCountRight}</ENumber>
+            <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button
+                onClick={incrementDryBreakCountRight}
+                css={button}
+                colorScheme="whatsapp"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementDryBreakCountRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -107,29 +160,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementScratchLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button
+                onClick={incrementScratchLeft}
+                css={button}
+                colorScheme="whatsapp"
+              >
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
+            <ENumber>{ScratchLeft}</ENumber>
             <ETextBox>
               <ETextline>Scratches on break</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{ScratchRight}</ENumber>
+            <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button
+                onClick={incrementScratchRight}
+                css={button}
+                colorScheme="whatsapp"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementScratchRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -146,13 +215,13 @@ export const Home = () => {
                 </Button>
               </WrapItem>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>ball made on break</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -176,13 +245,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>shot after the break</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -207,13 +276,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>break and run</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -237,13 +306,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>Consecutive break and runs</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>%</ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -258,23 +327,23 @@ export const Home = () => {
 
           <br />
           <EFlex2>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>Longest game winning streak</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
           </EFlex2>
           <br />
           <EFlex2>
-            <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
+            <ENumber></ENumber>
             <ETextBox>
               <ETextline>In game stats</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
+            <ENumber></ENumber>
           </EFlex2>
 
           <EFlex2>
@@ -298,13 +367,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>Balls pocketed</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -329,13 +398,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>Balls Missed</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -359,13 +428,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>Unforced errors</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -389,13 +458,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>Safety errors</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -419,13 +488,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>Kicking Errors</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <WrapItem>
               <Button css={button} colorScheme="whatsapp">
                 +1
@@ -439,13 +508,13 @@ export const Home = () => {
           </EFlex>
 
           <EFlex2>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>ACCU Stat Performance Rate</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
           </EFlex2>
         </EContainer>
       </Center>
