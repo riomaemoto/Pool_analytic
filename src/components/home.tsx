@@ -5,19 +5,48 @@ import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 
 export const Home = () => {
+  const [scoreLeft, setScoreLeft] = useState(0);
+  const [scoreRight, setScoreRight] = useState(0);
+  const [TotalBreaksLeft, setTotalBreaksLeft] = useState(0);
+  const [TotalBreaksRight, setTotalBreaksRight] = useState(0);
   const [DryBreakCountLeft, setDryBreakCountLeft] = useState(0);
   const [DryBreakCountRight, setDryBreakCountRight] = useState(0);
-
   const [ScratchLeft, setScratchLeft] = useState(0);
   const [ScratchRight, setScratchRight] = useState(0);
+  const [MadeonBreakLeft, setMadeonBreakLeft] = useState(0);
+  const [MadeonBreakRight, setMadeonBreakRight] = useState(0);
 
+  const incrementScoreLeft = () => {
+    setScoreLeft(scoreLeft + 1);
+  };
+  const decrementScoreLeft = () => {
+    setScoreLeft(scoreLeft - 1);
+  };
+  const incrementScoreRight = () => {
+    setScoreRight(scoreRight + 1);
+  };
+  const decrementScoreRight = () => {
+    setScoreRight(scoreRight - 1);
+  };
+
+  const incrementTotalBreaksLeft = () => {
+    setTotalBreaksLeft(TotalBreaksLeft + 1);
+  };
+  const decrementTotalBreaksLeft = () => {
+    setTotalBreaksLeft(TotalBreaksLeft - 1);
+  };
+  const incrementTotalBreaksRight = () => {
+    setTotalBreaksRight(TotalBreaksRight + 1);
+  };
+  const decrementTotalBreaksRight = () => {
+    setTotalBreaksRight(TotalBreaksRight - 1);
+  };
   const incrementDryBreakCountLeft = () => {
     setDryBreakCountLeft(DryBreakCountLeft + 1);
   };
   const decrementDryBreakCountLeft = () => {
     setDryBreakCountLeft(DryBreakCountLeft - 1);
   };
-
   const incrementDryBreakCountRight = () => {
     setDryBreakCountRight(DryBreakCountRight + 1);
   };
@@ -25,6 +54,11 @@ export const Home = () => {
     setDryBreakCountRight(DryBreakCountRight - 1);
   };
 
+  const persentageDryBreakCountRight = Math.round(
+    (DryBreakCountRight / TotalBreaksRight) * 100
+  );
+
+  // ----------------------------Scratch on break------------------
   const incrementScratchLeft = () => {
     setScratchLeft(ScratchLeft + 1);
   };
@@ -40,9 +74,22 @@ export const Home = () => {
   const decrementScratchRight = () => {
     setScratchRight(ScratchRight - 1);
   };
+  // ----------------------------Made on break --------------------------
+  const incrementMadeonBreakLeft = () => {
+    setMadeonBreakLeft(MadeonBreakLeft + 1);
+  };
+  const decrementMadeonBreakLeft = () => {
+    setMadeonBreakLeft(MadeonBreakLeft - 1);
+  };
+  const incrementMadeonBreakRight = () => {
+    setMadeonBreakRight(MadeonBreakRight + 1);
+  };
+  const decrementMadeonBreakRight = () => {
+    setMadeonBreakRight(MadeonBreakRight - 1);
+  };
 
   const vvv = css`
-    background-color: rgba(131, 234, 22, 0.2);
+    background-color: rgba(161, 214, 20, 0.2);
     overflow: hidden;
   `;
   const EContainer = styled.div``;
@@ -82,35 +129,105 @@ export const Home = () => {
         <EContainer>
           <EFlex2>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>First breaks</ENumber>
             <ETextBox>
               <ETextline>Break</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>Odd breaks</ENumber>
             <ENumber></ENumber>
           </EFlex2>
 
-          <EFlex2>
+          <EFlex>
+            <WrapItem>
+              <Button
+                onClick={decrementScoreLeft}
+                css={button}
+                colorScheme="red"
+              >
+                -1
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                onClick={incrementScoreLeft}
+                css={button}
+                colorScheme="blue"
+              >
+                +1
+              </Button>
+            </WrapItem>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
-
+            <ENumber>{scoreLeft}</ENumber>
             <ETextBox>
-              <ETextline>Game score</ETextline>
+              <ETextline>Game Score</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{scoreRight}</ENumber>
             <ENumber></ENumber>
-          </EFlex2>
+            <WrapItem>
+              <Button
+                onClick={incrementScoreRight}
+                css={button}
+                colorScheme="blue"
+              >
+                +1
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                onClick={decrementScoreRight}
+                css={button}
+                colorScheme="red"
+              >
+                -1
+              </Button>
+            </WrapItem>
+          </EFlex>
 
-          <EFlex2>
-            <ENumber></ENumber>
-            <ENumber>1</ENumber>
-
+          <EFlex>
+            <WrapItem>
+              <Button
+                onClick={decrementTotalBreaksLeft}
+                css={button}
+                colorScheme="red"
+              >
+                -1
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                onClick={incrementTotalBreaksLeft}
+                css={button}
+                colorScheme="blue"
+              >
+                +1
+              </Button>
+            </WrapItem>
+            <ENumber>%</ENumber>
+            <ENumber>{TotalBreaksLeft}</ENumber>
             <ETextBox>
-              <ETextline>Total breaks</ETextline>
+              <ETextline>Total Break</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
-            <ENumber></ENumber>
-          </EFlex2>
+            <ENumber>{TotalBreaksRight}</ENumber>
+            <ENumber>{persentageDryBreakCountRight}%</ENumber>
+            <WrapItem>
+              <Button
+                onClick={incrementTotalBreaksRight}
+                css={button}
+                colorScheme="blue"
+              >
+                +1
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                onClick={decrementTotalBreaksRight}
+                css={button}
+                colorScheme="red"
+              >
+                -1
+              </Button>
+            </WrapItem>
+          </EFlex>
 
           <EFlex>
             <WrapItem>
@@ -126,7 +243,7 @@ export const Home = () => {
               <Button
                 onClick={incrementDryBreakCountLeft}
                 css={button}
-                colorScheme="whatsapp"
+                colorScheme="blue"
               >
                 +1
               </Button>
@@ -137,12 +254,12 @@ export const Home = () => {
               <ETextline>Dry breaks</ETextline>
             </ETextBox>
             <ENumber>{DryBreakCountRight}</ENumber>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageDryBreakCountRight}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementDryBreakCountRight}
                 css={button}
-                colorScheme="whatsapp"
+                colorScheme="blue"
               >
                 +1
               </Button>
@@ -172,7 +289,7 @@ export const Home = () => {
               <Button
                 onClick={incrementScratchLeft}
                 css={button}
-                colorScheme="whatsapp"
+                colorScheme="blue"
               >
                 +1
               </Button>
@@ -188,7 +305,7 @@ export const Home = () => {
               <Button
                 onClick={incrementScratchRight}
                 css={button}
-                colorScheme="whatsapp"
+                colorScheme="blue"
               >
                 +1
               </Button>
@@ -206,29 +323,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementMadeonBreakLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
               <WrapItem>
-                <Button css={button} colorScheme="whatsapp">
+                <Button
+                  onClick={incrementMadeonBreakLeft}
+                  css={button}
+                  colorScheme="blue"
+                >
                   +1
                 </Button>
               </WrapItem>
             </WrapItem>
             <ENumber>%</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{MadeonBreakLeft}</ENumber>
             <ETextBox>
               <ETextline>ball made on break</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{MadeonBreakRight}</ENumber>
             <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button
+                onClick={incrementMadeonBreakRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementMadeonBreakRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -241,7 +374,7 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -253,7 +386,7 @@ export const Home = () => {
             <ENumber>1</ENumber>
             <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -272,7 +405,7 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -284,7 +417,7 @@ export const Home = () => {
             <ENumber>1</ENumber>
             <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -302,7 +435,7 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -314,7 +447,7 @@ export const Home = () => {
             <ENumber>1</ENumber>
             <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -363,19 +496,19 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>100</ENumber>
             <ETextBox>
               <ETextline>Balls pocketed</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -394,7 +527,7 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -406,7 +539,7 @@ export const Home = () => {
             <ENumber>1</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -424,7 +557,7 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -436,7 +569,7 @@ export const Home = () => {
             <ENumber>1</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -454,7 +587,7 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -466,7 +599,7 @@ export const Home = () => {
             <ENumber>1</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -484,7 +617,7 @@ export const Home = () => {
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -496,7 +629,7 @@ export const Home = () => {
             <ENumber>1</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="whatsapp">
+              <Button css={button} colorScheme="blue">
                 +1
               </Button>
             </WrapItem>
@@ -508,13 +641,13 @@ export const Home = () => {
           </EFlex>
 
           <EFlex2>
-            <ENumber></ENumber>
+            <ENumber>%</ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
               <ETextline>ACCU Stat Performance Rate</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
-            <ENumber></ENumber>
+            <ENumber>%</ENumber>
           </EFlex2>
         </EContainer>
       </Center>
