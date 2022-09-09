@@ -302,10 +302,24 @@ export const Home = () => {
 
   const vvv = css`
     background-color: rgba(211, 274, 80, 0.2);
+    @media (max-width: 500px) {
+      background-color: white;
+    }
   `;
-  const EContainer = styled.div``;
+
+  const EContainer = styled.div`
+    padding: 40px;
+    @media (max-width: 500px) {
+      margin-left: 130px;
+      padding: 60px 30px 40px 50px;
+    }
+  `;
+
   const button = css`
     width: 80px;
+    @media (max-width: 500px) {
+      width: 40px;
+    }
   `;
   const ETextBox = styled.div`
     background-color: rgba(11, 434, 332);
@@ -318,6 +332,10 @@ export const Home = () => {
     font-weight: 600;
     margin: 6px;
     width: 240px;
+    @media (max-width: 500px) {
+      margin: 3px;
+      width: 120px;
+    }
   `;
   const ENumber = styled.div`
     text-align: center;
@@ -325,6 +343,10 @@ export const Home = () => {
     border: 0.5px solid;
     box-sizing: border-box;
     padding: 5px;
+    @media (max-width: 500px) {
+      padding: 2.5px;
+      width: 80px;
+    }
   `;
   const EFlex = styled.div`
     display: flex;
@@ -334,6 +356,9 @@ export const Home = () => {
     display: flex;
     margin: 1px;
     margin-left: 161px;
+    @media (max-width: 500px) {
+      margin-left: 81px;
+    }
   `;
   const TopFlex = styled.div`
     display: flex;
@@ -342,7 +367,7 @@ export const Home = () => {
 
   return (
     <>
-      <Center css={vvv} h="100vh">
+      <Center css={vvv} h="100%">
         <EContainer>
           <TopFlex>
             <Input variant="filled" placeholder="Filled" />
