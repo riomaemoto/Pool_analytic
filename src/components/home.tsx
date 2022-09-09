@@ -2,16 +2,12 @@ import { Center, WrapItem } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
-import { Input } from "@chakra-ui/react";
-import {
-  Editable,
-  EditableInput,
-  EditableTextarea,
-  EditablePreview,
-} from "@chakra-ui/react";
+import { ChangeEvent, useState } from "react";
 
 export const Home = () => {
+  const [InputValueLeft, setInputValueLeft] = useState("");
+  const [InputValueRight, setInputValueRight] = useState("");
+
   // const [InputNameLeft, setInputNameLeft] = useState(0);
   // const [InputNameRight, setInputNameRight] = useState(0);
   const [scoreLeft, setScoreLeft] = useState(0);
@@ -384,18 +380,35 @@ export const Home = () => {
     margin: 1px;
   `;
 
+  const handleChangeLeft = (InputValueLeft: ChangeEvent<HTMLInputElement>) => {
+    setInputValueLeft(InputValueLeft.target.value);
+  };
+  const handleChangeRight = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValueRight(e.target.value);
+  };
+
   return (
     <>
       <Center css={vvv} h="100%">
         <EContainer>
           <TopFlex>
-            <Input id="LeftName" variant="filled" placeholder="Filled" />
+            <input
+              value={InputValueLeft}
+              type="text"
+              onChange={(e) => handleChangeLeft(e)}
+              className="inputText"
+            />
             <ENumber>First breaks</ENumber>
             <ETextBox>
               <ETextline>Break</ETextline>
             </ETextBox>
             <ENumber>Odd breaks</ENumber>
-            <Input variant="filled" placeholder="Filled" />
+            <input
+              value={InputValueRight}
+              type="text"
+              onChange={(e) => handleChangeRight(e)}
+              className="inputText"
+            />
           </TopFlex>
 
           <EFlex>
