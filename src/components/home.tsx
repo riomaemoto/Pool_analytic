@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Input } from "@chakra-ui/react";
 
 export const Home = () => {
+  // const [InputNameLeft, setInputNameLeft] = useState(0);
+  // const [InputNameRight, setInputNameRight] = useState(0);
   const [scoreLeft, setScoreLeft] = useState(0);
   const [scoreRight, setScoreRight] = useState(0);
   const [TotalBreaksLeft, setTotalBreaksLeft] = useState(0);
@@ -35,6 +37,17 @@ export const Home = () => {
   const [KickingLeft, setKickingLeft] = useState(0);
   const [KickingRight, setKickingRight] = useState(0);
 
+  // ------------------ Input Name ----------------------------------
+  // const ShowNameLeft = () => {
+  //   setInputNameLeft(InputNameLeft);
+  // };
+
+  // const InputNameLeft = LeftName;
+
+  // const incrementScoreLeft = () => {
+  //   setScoreLeft(scoreLeft + 1);
+  // };
+  // ------------------ Score ----------------------------------
   const incrementScoreLeft = () => {
     setScoreLeft(scoreLeft + 1);
   };
@@ -303,15 +316,15 @@ export const Home = () => {
   const vvv = css`
     background-color: rgba(211, 274, 80, 0.2);
     @media (max-width: 500px) {
-      background-color: white;
+      background-color: red;
     }
   `;
 
   const EContainer = styled.div`
     padding: 40px;
     @media (max-width: 500px) {
-      margin-left: 230px;
-      padding: 60px 30px 40px 50px;
+      margin-left: 240px;
+      padding: 80px 30px 40px 50px;
     }
   `;
 
@@ -370,7 +383,7 @@ export const Home = () => {
       <Center css={vvv} h="100%">
         <EContainer>
           <TopFlex>
-            <Input variant="filled" placeholder="Filled" />
+            <Input id="LeftName" variant="filled" placeholder="Filled" />
             <ENumber>First breaks</ENumber>
             <ETextBox>
               <ETextline>Break</ETextline>
