@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
+import { Input } from "@chakra-ui/react";
 
 export const Home = () => {
   const [scoreLeft, setScoreLeft] = useState(0);
@@ -195,6 +196,17 @@ export const Home = () => {
     setLongestGameWinRight(LongestGameWinRight - 1);
   };
 
+  // ---------------------------- TotalScore -----------------------------
+
+  const aaa = scoreLeft * 9;
+  const bbb = scoreRight * 9;
+
+  const TotalScore = aaa + bbb;
+
+  // ---------------------------- BallsLeft ---------------------------------
+
+  const BallsLeft = TotalScore - BallspocketedLeft - BallspocketedRight;
+
   // ---------------------------- Balls pocketed ----------------------------------
 
   const incrementBallspocketedLeft = () => {
@@ -269,10 +281,6 @@ export const Home = () => {
     setKickingRight(KickingRight - 1);
   };
 
-  // ---------------------------- TotalScore -----------------------------
-
-  const TotalScore = scoreLeft + scoreRight * 10;
-
   // ---------------------------- ACCUStatLeft -----------------------------
 
   const ACCUStatLeft =
@@ -310,7 +318,7 @@ export const Home = () => {
     text-align: center;
     font-weight: 600;
     margin: 6px;
-    width: 250px;
+    width: 240px;
   `;
   const ENumber = styled.div`
     text-align: center;
@@ -328,20 +336,24 @@ export const Home = () => {
     margin: 1px;
     margin-left: 161px;
   `;
+  const TopFlex = styled.div`
+    display: flex;
+    margin: 1px;
+  `;
 
   return (
     <>
       <Center css={vvv} h="100vh">
         <EContainer>
-          <EFlex2>
-            <ENumber></ENumber>
+          <TopFlex>
+            <Input variant="filled" placeholder="Filled" />
             <ENumber>First breaks</ENumber>
             <ETextBox>
               <ETextline>Break</ETextline>
             </ETextBox>
             <ENumber>Odd breaks</ENumber>
-            <ENumber></ENumber>
-          </EFlex2>
+            <Input variant="filled" placeholder="Filled" />
+          </TopFlex>
 
           <EFlex>
             <WrapItem>
@@ -457,7 +469,7 @@ export const Home = () => {
             <ENumber>{persentageDryBreakCountLeft}%</ENumber>
             <ENumber>{DryBreakCountLeft}</ENumber>
             <ETextBox>
-              <ETextline>Dry breaks</ETextline>
+              <ETextline>Dry Breaks</ETextline>
             </ETextBox>
             <ENumber>{DryBreakCountRight}</ENumber>
             <ENumber>{persentageDryBreakCountRight}%</ENumber>
@@ -503,7 +515,7 @@ export const Home = () => {
             <ENumber>{persentageScratchLeft}%</ENumber>
             <ENumber>{ScratchLeft}</ENumber>
             <ETextBox>
-              <ETextline>Scratches on break</ETextline>
+              <ETextline>Scratches on Break</ETextline>
             </ETextBox>
             <ENumber>{ScratchRight}</ENumber>
             <ENumber>{persentageScratchRight}%</ENumber>
@@ -546,13 +558,13 @@ export const Home = () => {
                 </Button>
               </WrapItem>
             </WrapItem>
-            <ENumber>{persentageMadeonBreakLeft}</ENumber>
+            <ENumber>{persentageMadeonBreakLeft}%</ENumber>
             <ENumber>{MadeonBreakLeft}</ENumber>
             <ETextBox>
-              <ETextline>ball made on break</ETextline>
+              <ETextline>Ball Made on Break</ETextline>
             </ETextBox>
             <ENumber>{MadeonBreakRight}</ENumber>
-            <ENumber>{persentageMadeonBreakRight}</ENumber>
+            <ENumber>{persentageMadeonBreakRight}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementMadeonBreakRight}
@@ -592,13 +604,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>{persentageShotafterBreakLeft}</ENumber>
+            <ENumber>{persentageShotafterBreakLeft}%</ENumber>
             <ENumber>{ShotafterBreakLeft}</ENumber>
             <ETextBox>
-              <ETextline>shot after the break</ETextline>
+              <ETextline>Shot After The Break</ETextline>
             </ETextBox>
             <ENumber>{ShotafterBreakRight}</ENumber>
-            <ENumber>{persentageShotafterBreakRight}</ENumber>
+            <ENumber>{persentageShotafterBreakRight}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementShotafterBreakRight}
@@ -639,13 +651,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>{persentageBreakandRunLeft}</ENumber>
+            <ENumber>{persentageBreakandRunLeft}%</ENumber>
             <ENumber>{BreakandRunLeft}</ENumber>
             <ETextBox>
-              <ETextline>break and run</ETextline>
+              <ETextline>Break and Run</ETextline>
             </ETextBox>
             <ENumber>{BreakandRunRight}</ENumber>
-            <ENumber>{persentageBreakandRunRight}</ENumber>
+            <ENumber>{persentageBreakandRunRight}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementBreakandRunRight}
@@ -688,7 +700,7 @@ export const Home = () => {
             <ENumber></ENumber>
             <ENumber>{ConsecutiveBRLeft}</ENumber>
             <ETextBox>
-              <ETextline>Consecutive break and runs</ETextline>
+              <ETextline>Consecutive Break and Runs</ETextline>
             </ETextBox>
             <ENumber>{ConsecutiveBRRight}</ENumber>
             <ENumber></ENumber>
@@ -735,7 +747,7 @@ export const Home = () => {
             <ENumber></ENumber>
             <ENumber>{LongestGameWinLeft}</ENumber>
             <ETextBox>
-              <ETextline>Longest game winning streak</ETextline>
+              <ETextline>Longest Game Winning Streak</ETextline>
             </ETextBox>
             <ENumber>{LongestGameWinRight}</ENumber>
             <ENumber></ENumber>
@@ -763,20 +775,20 @@ export const Home = () => {
             <ENumber></ENumber>
             <ENumber></ENumber>
             <ETextBox>
-              <ETextline>In game stats</ETextline>
+              <ETextline>In Game Stats</ETextline>
             </ETextBox>
             <ENumber></ENumber>
             <ENumber></ENumber>
           </EFlex2>
 
           <EFlex2>
-            <ENumber>Balls left</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
+            <ENumber>{BallsLeft}</ENumber>
             <ETextBox>
               <ETextline>{TotalScore}</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
-            <ENumber>Balls left</ENumber>
+            <ENumber>{BallsLeft}</ENumber>
+            <ENumber></ENumber>
           </EFlex2>
 
           <EFlex>
@@ -801,7 +813,7 @@ export const Home = () => {
             <ENumber></ENumber>
             <ENumber>{BallspocketedLeft}</ENumber>
             <ETextBox>
-              <ETextline>Balls pocketed</ETextline>
+              <ETextline>Balls Pocketed</ETextline>
             </ETextBox>
             <ENumber>{BallspocketedRight}</ENumber>
             <ENumber></ENumber>
@@ -894,7 +906,7 @@ export const Home = () => {
             <ENumber></ENumber>
             <ENumber>{UnforcedLeft}</ENumber>
             <ETextBox>
-              <ETextline>Unforced errors</ETextline>
+              <ETextline>Unforced Errors</ETextline>
             </ETextBox>
             <ENumber>{UnforcedRight}</ENumber>
             <ENumber></ENumber>
@@ -940,7 +952,7 @@ export const Home = () => {
             <ENumber></ENumber>
             <ENumber>{SafetyLeft}</ENumber>
             <ETextBox>
-              <ETextline>Safety errors</ETextline>
+              <ETextline>Safety Errors</ETextline>
             </ETextBox>
             <ENumber>{SafetyRight}</ENumber>
             <ENumber></ENumber>
@@ -1014,7 +1026,7 @@ export const Home = () => {
             <ENumber></ENumber>
             <ENumber>{PersentageACCUStatLeft}</ENumber>
             <ETextBox>
-              <ETextline>ACCU Stat Performance Rate</ETextline>
+              <ETextline>ACCU-STAT Performance Rate</ETextline>
             </ETextBox>
             <ENumber>{PersentageACCUStatRight}</ENumber>
             <ENumber></ENumber>
