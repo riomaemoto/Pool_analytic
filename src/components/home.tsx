@@ -15,6 +15,16 @@ export const Home = () => {
   const [ScratchRight, setScratchRight] = useState(0);
   const [MadeonBreakLeft, setMadeonBreakLeft] = useState(0);
   const [MadeonBreakRight, setMadeonBreakRight] = useState(0);
+  const [ShotafterBreakLeft, setShotafterBreakLeft] = useState(0);
+  const [ShotafterBreakRight, setShotafterBreakRight] = useState(0);
+  const [BreakandRunLeft, setBreakandRunLeft] = useState(0);
+  const [BreakandRunRight, setBreakandRunRight] = useState(0);
+  const [ConsecutiveBRLeft, setConsecutiveBRLeft] = useState(0);
+  const [ConsecutiveBRRight, setConsecutiveBRRight] = useState(0);
+  const [BallspocketedLeft, setBallspocketedLeft] = useState(0);
+  const [BallspocketedRight, setBallspocketedRight] = useState(0);
+  const [MissedLeft, setMissedLeft] = useState(0);
+  const [MissedRight, setMissedRight] = useState(0);
 
   const incrementScoreLeft = () => {
     setScoreLeft(scoreLeft + 1);
@@ -28,7 +38,7 @@ export const Home = () => {
   const decrementScoreRight = () => {
     setScoreRight(scoreRight - 1);
   };
-
+  // ----------------TotalBreaks----------------------------
   const incrementTotalBreaksLeft = () => {
     setTotalBreaksLeft(TotalBreaksLeft + 1);
   };
@@ -41,6 +51,8 @@ export const Home = () => {
   const decrementTotalBreaksRight = () => {
     setTotalBreaksRight(TotalBreaksRight - 1);
   };
+
+  // ----------------DryBreakCount----------------------------
   const incrementDryBreakCountLeft = () => {
     setDryBreakCountLeft(DryBreakCountLeft + 1);
   };
@@ -56,6 +68,9 @@ export const Home = () => {
 
   const persentageDryBreakCountRight = Math.round(
     (DryBreakCountRight / TotalBreaksRight) * 100
+  );
+  const persentageDryBreakCountLeft = Math.round(
+    (DryBreakCountLeft / TotalBreaksLeft) * 100
   );
 
   // ----------------------------Scratch on break------------------
@@ -87,9 +102,77 @@ export const Home = () => {
   const decrementMadeonBreakRight = () => {
     setMadeonBreakRight(MadeonBreakRight - 1);
   };
+  // ----------------------------Shot after Break --------------------------
+  const incrementShotafterBreakLeft = () => {
+    setShotafterBreakLeft(ShotafterBreakLeft + 1);
+  };
+  const decrementShotafterBreakLeft = () => {
+    setShotafterBreakLeft(ShotafterBreakLeft - 1);
+  };
+  const incrementShotafterBreakRight = () => {
+    setShotafterBreakRight(ShotafterBreakRight + 1);
+  };
+  const decrementShotafterBreakRight = () => {
+    setShotafterBreakRight(ShotafterBreakRight - 1);
+  };
+  // ----------------------------Break and run --------------------------
+  const incrementBreakandRunLeft = () => {
+    setBreakandRunLeft(BreakandRunLeft + 1);
+  };
+  const decrementBreakandRunLeft = () => {
+    setBreakandRunLeft(BreakandRunLeft - 1);
+  };
+  const incrementBreakandRunRight = () => {
+    setBreakandRunRight(BreakandRunRight + 1);
+  };
+  const decrementBreakandRunRight = () => {
+    setBreakandRunRight(BreakandRunRight - 1);
+  };
+  // ----------------------------consecutive Break and run --------------------------
+
+  const incrementConsecutiveBRLeft = () => {
+    setConsecutiveBRLeft(ConsecutiveBRLeft + 1);
+  };
+  const decrementConsecutiveBRLeft = () => {
+    setConsecutiveBRLeft(ConsecutiveBRLeft - 1);
+  };
+  const incrementConsecutiveBRRight = () => {
+    setConsecutiveBRRight(ConsecutiveBRRight + 1);
+  };
+  const decrementConsecutiveBRRight = () => {
+    setConsecutiveBRRight(ConsecutiveBRRight - 1);
+  };
+
+  // ---------------------------- Balls pocketed -----------------------------
+
+  const incrementBallspocketedLeft = () => {
+    setBallspocketedLeft(BallspocketedLeft + 1);
+  };
+  const decrementBallspocketedLeft = () => {
+    setBallspocketedLeft(BallspocketedLeft - 1);
+  };
+  const incrementBallspocketedRight = () => {
+    setBallspocketedRight(BallspocketedRight + 1);
+  };
+  const decrementBallspocketedRight = () => {
+    setBallspocketedRight(BallspocketedRight - 1);
+  };
+
+  const incrementMissedLeft = () => {
+    setMissedLeft(MissedLeft + 1);
+  };
+  const decrementMissedLeft = () => {
+    setMissedLeft(MissedLeft - 1);
+  };
+  const incrementMissedRight = () => {
+    setMissedRight(MissedRight + 1);
+  };
+  const decrementMissedRight = () => {
+    setMissedRight(MissedRight - 1);
+  };
 
   const vvv = css`
-    background-color: rgba(161, 214, 20, 0.2);
+    background-color: rgba(211, 274, 80, 0.2);
     overflow: hidden;
   `;
   const EContainer = styled.div``;
@@ -112,6 +195,8 @@ export const Home = () => {
     text-align: center;
     width: 80px;
     border: 0.5px solid;
+    box-sizing: border-box;
+    padding: 5px;
   `;
   const EFlex = styled.div`
     display: flex;
@@ -202,7 +287,7 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageDryBreakCountLeft}%</ENumber>
             <ENumber>{TotalBreaksLeft}</ENumber>
             <ETextBox>
               <ETextline>Total Break</ETextline>
@@ -248,7 +333,7 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageDryBreakCountLeft}%</ENumber>
             <ENumber>{DryBreakCountLeft}</ENumber>
             <ETextBox>
               <ETextline>Dry breaks</ETextline>
@@ -369,29 +454,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementShotafterBreakLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementShotafterBreakLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber>%</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{ShotafterBreakLeft}</ENumber>
             <ETextBox>
               <ETextline>shot after the break</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{ShotafterBreakRight}</ENumber>
             <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementShotafterBreakRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementShotafterBreakRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -400,29 +501,45 @@ export const Home = () => {
           <br />
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementBreakandRunLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementBreakandRunLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber>%</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{BreakandRunLeft}</ENumber>
             <ETextBox>
               <ETextline>break and run</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{BreakandRunRight}</ENumber>
             <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementBreakandRunRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementBreakandRunRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -430,29 +547,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementConsecutiveBRLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementConsecutiveBRLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber>%</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{ConsecutiveBRLeft}</ENumber>
             <ETextBox>
               <ETextline>Consecutive break and runs</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{ConsecutiveBRRight}</ENumber>
             <ENumber>%</ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementConsecutiveBRRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementConsecutiveBRRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -491,29 +624,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementBallspocketedLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementBallspocketedLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber></ENumber>
-            <ENumber>100</ENumber>
+            <ENumber>{BallspocketedLeft}</ENumber>
             <ETextBox>
               <ETextline>Balls pocketed</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{BallspocketedRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementBallspocketedRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementBallspocketedRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -522,29 +671,45 @@ export const Home = () => {
           <br />
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementMissedLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementMissedLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{MissedLeft}</ENumber>
             <ETextBox>
               <ETextline>Balls Missed</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{MissedRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementMissedRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementMissedRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
