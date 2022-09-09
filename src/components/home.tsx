@@ -310,7 +310,7 @@ export const Home = () => {
   const EContainer = styled.div`
     padding: 40px;
     @media (max-width: 500px) {
-      margin-left: 330px;
+      margin-left: 230px;
       padding: 60px 30px 40px 50px;
     }
   `;
