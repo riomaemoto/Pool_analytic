@@ -4,6 +4,12 @@ import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { Input } from "@chakra-ui/react";
+import {
+  Editable,
+  EditableInput,
+  EditableTextarea,
+  EditablePreview,
+} from "@chakra-ui/react";
 
 export const Home = () => {
   // const [InputNameLeft, setInputNameLeft] = useState(0);
@@ -316,7 +322,7 @@ export const Home = () => {
   const vvv = css`
     background-color: rgba(211, 274, 80, 0.2);
     @media (max-width: 500px) {
-      background-color: red;
+      background-color: white;
     }
   `;
 
