@@ -21,10 +21,18 @@ export const Home = () => {
   const [BreakandRunRight, setBreakandRunRight] = useState(0);
   const [ConsecutiveBRLeft, setConsecutiveBRLeft] = useState(0);
   const [ConsecutiveBRRight, setConsecutiveBRRight] = useState(0);
+  const [LongestGameWinLeft, setLongestGameWinLeft] = useState(0);
+  const [LongestGameWinRight, setLongestGameWinRight] = useState(0);
   const [BallspocketedLeft, setBallspocketedLeft] = useState(0);
   const [BallspocketedRight, setBallspocketedRight] = useState(0);
   const [MissedLeft, setMissedLeft] = useState(0);
   const [MissedRight, setMissedRight] = useState(0);
+  const [UnforcedLeft, setUnforcedLeft] = useState(0);
+  const [UnforcedRight, setUnforcedRight] = useState(0);
+  const [SafetyLeft, setSafetyLeft] = useState(0);
+  const [SafetyRight, setSafetyRight] = useState(0);
+  const [KickingLeft, setKickingLeft] = useState(0);
+  const [KickingRight, setKickingRight] = useState(0);
 
   const incrementScoreLeft = () => {
     setScoreLeft(scoreLeft + 1);
@@ -66,11 +74,12 @@ export const Home = () => {
     setDryBreakCountRight(DryBreakCountRight - 1);
   };
 
-  const persentageDryBreakCountRight = Math.round(
-    (DryBreakCountRight / TotalBreaksRight) * 100
-  );
   const persentageDryBreakCountLeft = Math.round(
     (DryBreakCountLeft / TotalBreaksLeft) * 100
+  );
+
+  const persentageDryBreakCountRight = Math.round(
+    (DryBreakCountRight / TotalBreaksRight) * 100
   );
 
   // ----------------------------Scratch on break------------------
@@ -89,6 +98,13 @@ export const Home = () => {
   const decrementScratchRight = () => {
     setScratchRight(ScratchRight - 1);
   };
+
+  const persentageScratchLeft = Math.round(
+    (ScratchLeft / TotalBreaksLeft) * 100
+  );
+  const persentageScratchRight = Math.round(
+    (ScratchRight / TotalBreaksRight) * 100
+  );
   // ----------------------------Made on break --------------------------
   const incrementMadeonBreakLeft = () => {
     setMadeonBreakLeft(MadeonBreakLeft + 1);
@@ -102,6 +118,13 @@ export const Home = () => {
   const decrementMadeonBreakRight = () => {
     setMadeonBreakRight(MadeonBreakRight - 1);
   };
+
+  const persentageMadeonBreakLeft = Math.round(
+    (MadeonBreakLeft / TotalBreaksLeft) * 100
+  );
+  const persentageMadeonBreakRight = Math.round(
+    (MadeonBreakRight / TotalBreaksRight) * 100
+  );
   // ----------------------------Shot after Break --------------------------
   const incrementShotafterBreakLeft = () => {
     setShotafterBreakLeft(ShotafterBreakLeft + 1);
@@ -115,6 +138,13 @@ export const Home = () => {
   const decrementShotafterBreakRight = () => {
     setShotafterBreakRight(ShotafterBreakRight - 1);
   };
+
+  const persentageShotafterBreakLeft = Math.round(
+    (ShotafterBreakLeft / TotalBreaksLeft) * 100
+  );
+  const persentageShotafterBreakRight = Math.round(
+    (ShotafterBreakRight / TotalBreaksRight) * 100
+  );
   // ----------------------------Break and run --------------------------
   const incrementBreakandRunLeft = () => {
     setBreakandRunLeft(BreakandRunLeft + 1);
@@ -128,6 +158,13 @@ export const Home = () => {
   const decrementBreakandRunRight = () => {
     setBreakandRunRight(BreakandRunRight - 1);
   };
+
+  const persentageBreakandRunLeft = Math.round(
+    (BreakandRunLeft / TotalBreaksLeft) * 100
+  );
+  const persentageBreakandRunRight = Math.round(
+    (BreakandRunRight / TotalBreaksRight) * 100
+  );
   // ----------------------------consecutive Break and run --------------------------
 
   const incrementConsecutiveBRLeft = () => {
@@ -143,7 +180,22 @@ export const Home = () => {
     setConsecutiveBRRight(ConsecutiveBRRight - 1);
   };
 
-  // ---------------------------- Balls pocketed -----------------------------
+  // ---------------------------- Longest Game Winning strike ---------------------------------
+
+  const incrementLongestGameWinLeft = () => {
+    setLongestGameWinLeft(LongestGameWinLeft + 1);
+  };
+  const decrementLongestGameWinLeft = () => {
+    setLongestGameWinLeft(LongestGameWinLeft - 1);
+  };
+  const incrementLongestGameWinRight = () => {
+    setLongestGameWinRight(LongestGameWinRight + 1);
+  };
+  const decrementLongestGameWinRight = () => {
+    setLongestGameWinRight(LongestGameWinRight - 1);
+  };
+
+  // ---------------------------- Balls pocketed ----------------------------------
 
   const incrementBallspocketedLeft = () => {
     setBallspocketedLeft(BallspocketedLeft + 1);
@@ -158,6 +210,8 @@ export const Home = () => {
     setBallspocketedRight(BallspocketedRight - 1);
   };
 
+  // ---------------------------- Balls Missed -----------------------------
+
   const incrementMissedLeft = () => {
     setMissedLeft(MissedLeft + 1);
   };
@@ -170,6 +224,73 @@ export const Home = () => {
   const decrementMissedRight = () => {
     setMissedRight(MissedRight - 1);
   };
+
+  // ---------------------------- Unforced Missed -----------------------------
+
+  const incrementUnforcedLeft = () => {
+    setUnforcedLeft(UnforcedLeft + 1);
+  };
+  const decrementUnforcedLeft = () => {
+    setUnforcedLeft(UnforcedLeft - 1);
+  };
+  const incrementUnforcedRight = () => {
+    setUnforcedRight(UnforcedRight + 1);
+  };
+  const decrementUnforcedRight = () => {
+    setUnforcedRight(UnforcedRight - 1);
+  };
+
+  // ---------------------------- Safety error -----------------------------
+
+  const incrementSafetyLeft = () => {
+    setSafetyLeft(SafetyLeft + 1);
+  };
+  const decrementSafetyLeft = () => {
+    setSafetyLeft(SafetyLeft - 1);
+  };
+  const incrementSafetyRight = () => {
+    setSafetyRight(SafetyRight + 1);
+  };
+  const decrementSafetyRight = () => {
+    setSafetyRight(SafetyRight - 1);
+  };
+
+  // ---------------------------- Kicking error -----------------------------
+  const incrementKickingLeft = () => {
+    setKickingLeft(KickingLeft + 1);
+  };
+  const decrementKickingLeft = () => {
+    setKickingLeft(KickingLeft - 1);
+  };
+  const incrementKickingRight = () => {
+    setKickingRight(KickingRight + 1);
+  };
+  const decrementKickingRight = () => {
+    setKickingRight(KickingRight - 1);
+  };
+
+  // ---------------------------- TotalScore -----------------------------
+
+  const TotalScore = scoreLeft + scoreRight * 10;
+
+  // ---------------------------- ACCUStatLeft -----------------------------
+
+  const ACCUStatLeft =
+    (MissedLeft + UnforcedLeft + SafetyLeft + KickingLeft) / BallspocketedLeft -
+    1;
+
+  const PersentageACCUStatLeft = Math.round(ACCUStatLeft * 1000) / 1000;
+
+  // ---------------------------- ACCUStatRight -----------------------------
+
+  const ACCUStatRight =
+    (MissedRight + UnforcedRight + SafetyRight + KickingRight) /
+      BallspocketedRight -
+    1;
+
+  const PersentageACCUStatRight = Math.round(ACCUStatRight * 1000) / 1000;
+
+  // ---------------------------- CSS -----------------------------
 
   const vvv = css`
     background-color: rgba(211, 274, 80, 0.2);
@@ -287,13 +408,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>{persentageDryBreakCountLeft}%</ENumber>
+            <ENumber></ENumber>
             <ENumber>{TotalBreaksLeft}</ENumber>
             <ETextBox>
               <ETextline>Total Break</ETextline>
             </ETextBox>
             <ENumber>{TotalBreaksRight}</ENumber>
-            <ENumber>{persentageDryBreakCountRight}%</ENumber>
+            <ENumber></ENumber>
             <WrapItem>
               <Button
                 onClick={incrementTotalBreaksRight}
@@ -379,13 +500,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageScratchLeft}%</ENumber>
             <ENumber>{ScratchLeft}</ENumber>
             <ETextBox>
               <ETextline>Scratches on break</ETextline>
             </ETextBox>
             <ENumber>{ScratchRight}</ENumber>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageScratchRight}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementScratchRight}
@@ -425,13 +546,13 @@ export const Home = () => {
                 </Button>
               </WrapItem>
             </WrapItem>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageMadeonBreakLeft}</ENumber>
             <ENumber>{MadeonBreakLeft}</ENumber>
             <ETextBox>
               <ETextline>ball made on break</ETextline>
             </ETextBox>
             <ENumber>{MadeonBreakRight}</ENumber>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageMadeonBreakRight}</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementMadeonBreakRight}
@@ -471,13 +592,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageShotafterBreakLeft}</ENumber>
             <ENumber>{ShotafterBreakLeft}</ENumber>
             <ETextBox>
               <ETextline>shot after the break</ETextline>
             </ETextBox>
             <ENumber>{ShotafterBreakRight}</ENumber>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageShotafterBreakRight}</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementShotafterBreakRight}
@@ -518,13 +639,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageBreakandRunLeft}</ENumber>
             <ENumber>{BreakandRunLeft}</ENumber>
             <ETextBox>
               <ETextline>break and run</ETextline>
             </ETextBox>
             <ENumber>{BreakandRunRight}</ENumber>
-            <ENumber>%</ENumber>
+            <ENumber>{persentageBreakandRunRight}</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementBreakandRunRight}
@@ -564,13 +685,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>%</ENumber>
+            <ENumber></ENumber>
             <ENumber>{ConsecutiveBRLeft}</ENumber>
             <ETextBox>
               <ETextline>Consecutive break and runs</ETextline>
             </ETextBox>
             <ENumber>{ConsecutiveBRRight}</ENumber>
-            <ENumber>%</ENumber>
+            <ENumber></ENumber>
             <WrapItem>
               <Button
                 onClick={incrementConsecutiveBRRight}
@@ -592,15 +713,51 @@ export const Home = () => {
           </EFlex>
 
           <br />
-          <EFlex2>
+          <EFlex>
+            <WrapItem>
+              <Button
+                onClick={decrementLongestGameWinLeft}
+                css={button}
+                colorScheme="red"
+              >
+                -1
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                onClick={incrementLongestGameWinLeft}
+                css={button}
+                colorScheme="blue"
+              >
+                +1
+              </Button>
+            </WrapItem>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{LongestGameWinLeft}</ENumber>
             <ETextBox>
               <ETextline>Longest game winning streak</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{LongestGameWinRight}</ENumber>
             <ENumber></ENumber>
-          </EFlex2>
+            <WrapItem>
+              <Button
+                onClick={incrementLongestGameWinRight}
+                css={button}
+                colorScheme="blue"
+              >
+                +1
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                onClick={decrementLongestGameWinRight}
+                css={button}
+                colorScheme="red"
+              >
+                -1
+              </Button>
+            </WrapItem>
+          </EFlex>
           <br />
           <EFlex2>
             <ENumber></ENumber>
@@ -616,7 +773,7 @@ export const Home = () => {
             <ENumber>Balls left</ENumber>
             <ENumber>1</ENumber>
             <ETextBox>
-              <ETextline>230</ETextline>
+              <ETextline>{TotalScore}</ETextline>
             </ETextBox>
             <ENumber>1</ENumber>
             <ENumber>Balls left</ENumber>
@@ -717,29 +874,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementUnforcedLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementUnforcedLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{UnforcedLeft}</ENumber>
             <ETextBox>
               <ETextline>Unforced errors</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{UnforcedRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementUnforcedRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementUnforcedRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -747,29 +920,45 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementSafetyLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementSafetyLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{SafetyLeft}</ENumber>
             <ETextBox>
               <ETextline>Safety errors</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{SafetyRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementSafetyRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementSafetyRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
@@ -777,42 +966,58 @@ export const Home = () => {
 
           <EFlex>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementKickingLeft}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementKickingLeft}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <ENumber></ENumber>
-            <ENumber>1</ENumber>
+            <ENumber>{KickingLeft}</ENumber>
             <ETextBox>
               <ETextline>Kicking Errors</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
+            <ENumber>{KickingRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button css={button} colorScheme="blue">
+              <Button
+                onClick={incrementKickingRight}
+                css={button}
+                colorScheme="blue"
+              >
                 +1
               </Button>
             </WrapItem>
             <WrapItem>
-              <Button css={button} colorScheme="red">
+              <Button
+                onClick={decrementKickingRight}
+                css={button}
+                colorScheme="red"
+              >
                 -1
               </Button>
             </WrapItem>
           </EFlex>
 
           <EFlex2>
-            <ENumber>%</ENumber>
-            <ENumber>1</ENumber>
+            <ENumber></ENumber>
+            <ENumber>{PersentageACCUStatLeft}</ENumber>
             <ETextBox>
               <ETextline>ACCU Stat Performance Rate</ETextline>
             </ETextBox>
-            <ENumber>1</ENumber>
-            <ENumber>%</ENumber>
+            <ENumber>{PersentageACCUStatRight}</ENumber>
+            <ENumber></ENumber>
           </EFlex2>
         </EContainer>
       </Center>
