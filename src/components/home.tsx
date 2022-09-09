@@ -302,7 +302,6 @@ export const Home = () => {
 
   const vvv = css`
     background-color: rgba(211, 274, 80, 0.2);
-    overflow: hidden;
   `;
   const EContainer = styled.div``;
   const button = css`
