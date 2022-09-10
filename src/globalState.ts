@@ -45,10 +45,90 @@ export const ScratcRightState = atom<number>({
 });
 
 export const BallMadeOnBreakLeftState = atom<number>({
-  key: "ScratchLeftState",
+  key: "BallMadeOnBreakLeftState",
   default: 0,
 });
 export const BallMadeOnBreakRightState = atom<number>({
-  key: "ScratcRightState",
+  key: "BallMadeOnBreakRightState",
+  default: 0,
+});
+
+export const ShotAfterBreakLeftState = atom<number>({
+  key: "ShotAfterBreakLeftState",
+  default: 0,
+});
+export const ShotAfterBreakRightState = atom<number>({
+  key: "ShotAfterBreakRightState",
+  default: 0,
+});
+
+export const BreakandRunLeftState = atom<number>({
+  key: "BreakandRunLeftState",
+  default: 0,
+});
+export const BreakandRunRightState = atom<number>({
+  key: "BreakandRunRightState",
+  default: 0,
+});
+
+export const ConsecutiveBreakandRunLeftState = atom<number>({
+  key: "ConsecutiveBreakandRunLeftState",
+  default: 0,
+});
+export const ConsecutiveBreakandRunRightState = atom<number>({
+  key: "ConsecutiveBreakandRunRightState",
+  default: 0,
+});
+export const LongestGameWinningStreakLeftState = atom<number>({
+  key: "LongestGameWinningStreakLeftState",
+  default: 0,
+});
+export const LongestGameWinningStreakRightState = atom<number>({
+  key: "LongestGameWinningStreakRightState",
+  default: 0,
+});
+
+export const BallsPocketedLeftState = atom<number>({
+  key: "BallsPocketedLeftState",
+  default: 0,
+});
+export const BallsPocketedRightState = atom<number>({
+  key: "BallsPocketedRightState",
+  default: 0,
+});
+
+export const BallsMissedLeftState = atom<number>({
+  key: "BallsMissedLeftState",
+  default: 0,
+});
+export const BallsMissedRightState = atom<number>({
+  key: "BallsMissedRightState",
+  default: 0,
+});
+
+export const UnforcedErrorsLeftState = atom<number>({
+  key: "UnforcedErrorsLeftState",
+  default: 0,
+});
+export const UnforcedErrorsRightState = atom<number>({
+  key: "UnforcedErrorsRightState",
+  default: 0,
+});
+
+export const SafeteyErrorsLeftState = atom<number>({
+  key: "SafeteyErrorsLeftState",
+  default: 0,
+});
+export const SafeteyErrorsRightState = atom<number>({
+  key: "SafeteyErrorsRightState",
+  default: 0,
+});
+
+export const KickingErrorsLeftState = atom<number>({
+  key: "KickingErrorsLeftState",
+  default: 0,
+});
+export const KickingErrorsRightState = atom<number>({
+  key: "KickingErrorsRightState",
   default: 0,
 });
