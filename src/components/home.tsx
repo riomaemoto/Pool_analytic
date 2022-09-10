@@ -3,11 +3,9 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
-import { UseForm } from "./useForm";
+import { InputForm } from "./input_form";
 
 export const Home = () => {
-  const [InputValueRight, setInputValueRight] = useState("");
-
   const [scoreLeft, setScoreLeft] = useState(0);
   const [scoreRight, setScoreRight] = useState(0);
   const [TotalBreaksLeft, setTotalBreaksLeft] = useState(0);
@@ -378,40 +376,18 @@ export const Home = () => {
     margin: 1px;
   `;
 
-  // const handleChangeRight = (
-  //   InputValueRight: ChangeEvent<HTMLInputElement>
-  // ) => {
-  //   setInputValueRight(InputValueRight.preventDefault());
-  // };
-
-  const { handleSubmit, handleChange, formState } = UseForm();
-
   return (
     <>
       <Center css={vvv} h="100%">
         <EContainer>
           <TopFlex>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                className="inputText"
-                id="name"
-                name="name"
-                value={formState.name}
-                onChange={handleChange}
-              />
-            </form>
+            <InputForm />
             <ENumber>First breaks</ENumber>
             <ETextBox>
               <ETextline>Break</ETextline>
             </ETextBox>
             <ENumber>Odd breaks</ENumber>
-            <input
-              value={InputValueRight}
-              type="text"
-              onChange={(e) => setInputValueRight(e.target.value)}
-              className="inputText"
-            />
+            <InputForm isRight />
           </TopFlex>
 
           <EFlex>
