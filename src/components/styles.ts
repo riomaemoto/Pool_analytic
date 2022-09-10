@@ -58,4 +58,5 @@ export const EFlex2 = styled.div`
 export const TopFlex = styled.div`
   display: flex;
   margin: 1px;
+  margin-left: 64px;
 `;
