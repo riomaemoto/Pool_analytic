@@ -78,6 +78,7 @@ export const TopFlex = styled.div`
     display: flex;
     margin-left: 3px;
     height: 68px;
+    width: 600px;
   }
 `;
 
