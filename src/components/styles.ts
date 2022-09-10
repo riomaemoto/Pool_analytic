@@ -81,11 +81,12 @@ export const EFlex2 = styled.div`
 `;
 export const TopFlex = styled.div`
   display: flex;
-  margin-left: 70px;
+  margin-left: 64px;
   @media (max-width: 500px) {
     display: flex;
     height: 68px;
-    margin-left: 0px;
+    width: 580px;
+    margin-left: 7px;
   }
 `;
 
