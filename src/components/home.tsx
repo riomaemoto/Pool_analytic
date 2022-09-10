@@ -2,14 +2,12 @@ import { Center, WrapItem } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
+import { UseForm } from "./useForm";
 
 export const Home = () => {
-  const [InputValueLeft, setInputValueLeft] = useState("");
   const [InputValueRight, setInputValueRight] = useState("");
 
-  // const [InputNameLeft, setInputNameLeft] = useState(0);
-  // const [InputNameRight, setInputNameRight] = useState(0);
   const [scoreLeft, setScoreLeft] = useState(0);
   const [scoreRight, setScoreRight] = useState(0);
   const [TotalBreaksLeft, setTotalBreaksLeft] = useState(0);
@@ -380,31 +378,27 @@ export const Home = () => {
     margin: 1px;
   `;
 
-  const handleChangeLeft = (InputValueLeft: ChangeEvent<HTMLInputElement>) => {
-    setInputValueLeft(InputValueLeft.target.value);
-  };
+  // const handleChangeRight = (
+  //   InputValueRight: ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   setInputValueRight(InputValueRight.preventDefault());
+  // };
 
-  const handleChangeRight = (
-    InputValueRight: ChangeEvent<HTMLInputElement>
-  ) => {
-    setInputValueRight(InputValueRight.target.value);
-  };
-
-  const handleSubmit = (InputValueLeft: FormEvent<HTMLFormElement>) => {
-    InputValueLeft.preventDefault();
-  };
+  const { handleSubmit, handleChange, formState } = UseForm();
 
   return (
     <>
       <Center css={vvv} h="100%">
         <EContainer>
           <TopFlex>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
               <input
-                value={InputValueLeft}
                 type="text"
-                onChange={(InputValueLeft) => handleChangeLeft(InputValueLeft)}
                 className="inputText"
+                id="name"
+                name="name"
+                value={formState.name}
+                onChange={handleChange}
               />
             </form>
             <ENumber>First breaks</ENumber>
@@ -415,7 +409,7 @@ export const Home = () => {
             <input
               value={InputValueRight}
               type="text"
-              onChange={(e) => handleChangeRight(e)}
+              onChange={(e) => setInputValueRight(e.target.value)}
               className="inputText"
             />
           </TopFlex>
@@ -531,13 +525,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>{persentageDryBreakCountLeft}%</ENumber>
+            <ENumber>{persentageDryBreakCountLeft || 0}%</ENumber>
             <ENumber>{DryBreakCountLeft}</ENumber>
             <ETextBox>
               <ETextline>Dry Breaks</ETextline>
             </ETextBox>
             <ENumber>{DryBreakCountRight}</ENumber>
-            <ENumber>{persentageDryBreakCountRight}%</ENumber>
+            <ENumber>{persentageDryBreakCountRight || 0}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementDryBreakCountRight}
@@ -577,13 +571,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>{persentageScratchLeft}%</ENumber>
+            <ENumber>{persentageScratchLeft || 0}%</ENumber>
             <ENumber>{ScratchLeft}</ENumber>
             <ETextBox>
               <ETextline>Scratches on Break</ETextline>
             </ETextBox>
             <ENumber>{ScratchRight}</ENumber>
-            <ENumber>{persentageScratchRight}%</ENumber>
+            <ENumber>{persentageScratchRight || 0}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementScratchRight}
@@ -623,13 +617,13 @@ export const Home = () => {
                 </Button>
               </WrapItem>
             </WrapItem>
-            <ENumber>{persentageMadeonBreakLeft}%</ENumber>
+            <ENumber>{persentageMadeonBreakLeft || 0}%</ENumber>
             <ENumber>{MadeonBreakLeft}</ENumber>
             <ETextBox>
               <ETextline>Ball Made on Break</ETextline>
             </ETextBox>
             <ENumber>{MadeonBreakRight}</ENumber>
-            <ENumber>{persentageMadeonBreakRight}%</ENumber>
+            <ENumber>{persentageMadeonBreakRight || 0}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementMadeonBreakRight}
@@ -669,13 +663,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>{persentageShotafterBreakLeft}%</ENumber>
+            <ENumber>{persentageShotafterBreakLeft || 0}%</ENumber>
             <ENumber>{ShotafterBreakLeft}</ENumber>
             <ETextBox>
               <ETextline>Shot After The Break</ETextline>
             </ETextBox>
             <ENumber>{ShotafterBreakRight}</ENumber>
-            <ENumber>{persentageShotafterBreakRight}%</ENumber>
+            <ENumber>{persentageShotafterBreakRight || 0}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementShotafterBreakRight}
@@ -716,13 +710,13 @@ export const Home = () => {
                 +1
               </Button>
             </WrapItem>
-            <ENumber>{persentageBreakandRunLeft}%</ENumber>
+            <ENumber>{persentageBreakandRunLeft || 0}%</ENumber>
             <ENumber>{BreakandRunLeft}</ENumber>
             <ETextBox>
               <ETextline>Break and Run</ETextline>
             </ETextBox>
             <ENumber>{BreakandRunRight}</ENumber>
-            <ENumber>{persentageBreakandRunRight}%</ENumber>
+            <ENumber>{persentageBreakandRunRight || 0}%</ENumber>
             <WrapItem>
               <Button
                 onClick={incrementBreakandRunRight}
@@ -1089,11 +1083,11 @@ export const Home = () => {
 
           <EFlex2>
             <ENumber></ENumber>
-            <ENumber>{PersentageACCUStatLeft}</ENumber>
+            <ENumber>{PersentageACCUStatLeft || 0}</ENumber>
             <ETextBox>
               <ETextline>ACCU-STAT Performance Rate</ETextline>
             </ETextBox>
-            <ENumber>{PersentageACCUStatRight}</ENumber>
+            <ENumber>{PersentageACCUStatRight || 0}</ENumber>
             <ENumber></ENumber>
           </EFlex2>
         </EContainer>
