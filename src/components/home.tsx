@@ -16,12 +16,11 @@ import {
 } from "./styles";
 import { totalBreaksLeftState, totalBreaksRightState } from "../globalState";
 import { useRecoilValue } from "recoil";
+import { ScratchOnBreak } from "./Scratches_on_Break";
+import { DryBreaks } from "./Dry_Breaks";
+import { BallMadeOnBreak } from "./ball_made_on_break";
 
 export const Home = () => {
-  const [ScratchLeft, setScratchLeft] = useState(0);
-  const [ScratchRight, setScratchRight] = useState(0);
-  const [MadeonBreakLeft, setMadeonBreakLeft] = useState(0);
-  const [MadeonBreakRight, setMadeonBreakRight] = useState(0);
   const [ShotafterBreakLeft, setShotafterBreakLeft] = useState(0);
   const [ShotafterBreakRight, setShotafterBreakRight] = useState(0);
   const [BreakandRunLeft, setBreakandRunLeft] = useState(0);
@@ -44,49 +43,6 @@ export const Home = () => {
   const TotalBreaksLeft = useRecoilValue(totalBreaksLeftState);
   const TotalBreaksRight = useRecoilValue(totalBreaksRightState);
 
-  // ----------------------------Scratch on break------------------
-  const incrementScratchLeft = () => {
-    setScratchLeft(ScratchLeft + 1);
-  };
-
-  const decrementScratchLeft = () => {
-    setScratchLeft(ScratchLeft - 1);
-  };
-
-  const incrementScratchRight = () => {
-    setScratchRight(ScratchRight + 1);
-  };
-
-  const decrementScratchRight = () => {
-    setScratchRight(ScratchRight - 1);
-  };
-
-  const persentageScratchLeft = Math.round(
-    (ScratchLeft / TotalBreaksLeft) * 100
-  );
-  const persentageScratchRight = Math.round(
-    (ScratchRight / TotalBreaksRight) * 100
-  );
-  // ----------------------------Made on break --------------------------
-  const incrementMadeonBreakLeft = () => {
-    setMadeonBreakLeft(MadeonBreakLeft + 1);
-  };
-  const decrementMadeonBreakLeft = () => {
-    setMadeonBreakLeft(MadeonBreakLeft - 1);
-  };
-  const incrementMadeonBreakRight = () => {
-    setMadeonBreakRight(MadeonBreakRight + 1);
-  };
-  const decrementMadeonBreakRight = () => {
-    setMadeonBreakRight(MadeonBreakRight - 1);
-  };
-
-  const persentageMadeonBreakLeft = Math.round(
-    (MadeonBreakLeft / TotalBreaksLeft) * 100
-  );
-  const persentageMadeonBreakRight = Math.round(
-    (MadeonBreakRight / TotalBreaksRight) * 100
-  );
   // ----------------------------Shot after Break --------------------------
   const incrementShotafterBreakLeft = () => {
     setShotafterBreakLeft(ShotafterBreakLeft + 1);
@@ -268,75 +224,9 @@ export const Home = () => {
           <Break />
           <GameScore />
           <TotalBreak />
-
-          <EFlex>
-            <WrapItem>
-              <SizedButton onClick={decrementScratchLeft} colorScheme="red">
-                -1
-              </SizedButton>
-            </WrapItem>
-            <WrapItem>
-              <SizedButton onClick={incrementScratchLeft} colorScheme="blue">
-                +1
-              </SizedButton>
-            </WrapItem>
-            <ENumber>{persentageScratchLeft || 0}%</ENumber>
-            <ENumber>{ScratchLeft}</ENumber>
-            <ETextBox>
-              <ETextline>Scratches on Break</ETextline>
-            </ETextBox>
-            <ENumber>{ScratchRight}</ENumber>
-            <ENumber>{persentageScratchRight || 0}%</ENumber>
-            <WrapItem>
-              <SizedButton onClick={incrementScratchRight} colorScheme="blue">
-                +1
-              </SizedButton>
-            </WrapItem>
-            <WrapItem>
-              <SizedButton onClick={decrementScratchRight} colorScheme="red">
-                -1
-              </SizedButton>
-            </WrapItem>
-          </EFlex>
-
-          <EFlex>
-            <WrapItem>
-              <SizedButton onClick={decrementMadeonBreakLeft} colorScheme="red">
-                -1
-              </SizedButton>
-              <WrapItem>
-                <SizedButton
-                  onClick={incrementMadeonBreakLeft}
-                  colorScheme="blue"
-                >
-                  +1
-                </SizedButton>
-              </WrapItem>
-            </WrapItem>
-            <ENumber>{persentageMadeonBreakLeft || 0}%</ENumber>
-            <ENumber>{MadeonBreakLeft}</ENumber>
-            <ETextBox>
-              <ETextline>Ball Made on Break</ETextline>
-            </ETextBox>
-            <ENumber>{MadeonBreakRight}</ENumber>
-            <ENumber>{persentageMadeonBreakRight || 0}%</ENumber>
-            <WrapItem>
-              <SizedButton
-                onClick={incrementMadeonBreakRight}
-                colorScheme="blue"
-              >
-                +1
-              </SizedButton>
-            </WrapItem>
-            <WrapItem>
-              <SizedButton
-                onClick={decrementMadeonBreakRight}
-                colorScheme="red"
-              >
-                -1
-              </SizedButton>
-            </WrapItem>
-          </EFlex>
+          <DryBreaks />
+          <ScratchOnBreak />
+          <BallMadeOnBreak />
 
           <EFlex>
             <WrapItem>

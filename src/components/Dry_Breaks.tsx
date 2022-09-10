@@ -8,7 +8,7 @@ import {
 } from "../globalState";
 import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
 
-export const TotalBreak = () => {
+export const DryBreaks = () => {
   // getter
   const left = useRecoilValue(dryBreakCountLeftState);
   const right = useRecoilValue(dryBreakCountRightState);

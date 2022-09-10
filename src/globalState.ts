@@ -18,7 +18,6 @@ export const scoreRightState = atom<number>({
   key: "scoreRightState",
   default: 0,
 });
-// const [scoreLeft, setScoreLeft] = useState(0);
 export const totalBreaksLeftState = atom<number>({
   key: "totalBreaksLeftState",
   default: 0,
@@ -34,5 +33,22 @@ export const dryBreakCountLeftState = atom<number>({
 });
 export const dryBreakCountRightState = atom<number>({
   key: "dryBreakCountRightState",
+  default: 0,
+});
+export const ScratchLeftState = atom<number>({
+  key: "ScratchLeftState",
+  default: 0,
+});
+export const ScratcRightState = atom<number>({
+  key: "ScratcRightState",
+  default: 0,
+});
+
+export const BallMadeOnBreakLeftState = atom<number>({
+  key: "ScratchLeftState",
+  default: 0,
+});
+export const BallMadeOnBreakRightState = atom<number>({
+  key: "ScratcRightState",
   default: 0,
 });

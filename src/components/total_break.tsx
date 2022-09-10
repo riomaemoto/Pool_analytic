@@ -5,25 +5,24 @@ import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
 
 export const TotalBreak = () => {
   // getter
-  const left = useRecoilValue(totalBreaksLeftState);
-  const right = useRecoilValue(totalBreaksRightState);
+  const totalLeft = useRecoilValue(totalBreaksLeftState);
+  const totalRight = useRecoilValue(totalBreaksRightState);
   // setter
   const setLeft = useSetRecoilState(totalBreaksLeftState);
   const setRight = useSetRecoilState(totalBreaksRightState);
 
   const incrementLeft = () => {
-    setLeft(left + 1);
+    setLeft(totalLeft + 1);
   };
   const decrementLeft = () => {
-    setLeft(left - 1);
+    setLeft(totalLeft - 1);
   };
   const incrementRight = () => {
-    setRight(right + 1);
+    setRight(totalRight + 1);
   };
   const decrementRight = () => {
-    setRight(right - 1);
+    setRight(totalRight - 1);
   };
-
   return (
     <EFlex>
       <WrapItem>
@@ -37,11 +36,11 @@ export const TotalBreak = () => {
         </SizedButton>
       </WrapItem>
       <ENumber></ENumber>
-      <ENumber>{left}</ENumber>
+      <ENumber>{totalLeft}</ENumber>
       <ETextBox>
         <ETextline>Total Break</ETextline>
       </ETextBox>
-      <ENumber>{right}</ENumber>
+      <ENumber>{totalRight}</ENumber>
       <ENumber></ENumber>
       <WrapItem>
         <SizedButton onClick={incrementRight} colorScheme="blue">
