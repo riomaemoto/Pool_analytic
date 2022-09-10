@@ -1,13 +1,20 @@
 import { Center, WrapItem } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { Button } from "@chakra-ui/react";
 import { useState } from "react";
+import { GameScore } from "./game_score";
 import { InputForm } from "./input_form";
+import {
+  EContainer,
+  EFlex,
+  EFlex2,
+  ENumber,
+  ETextBox,
+  ETextline,
+  SizedButton,
+  TopFlex,
+} from "./styles";
 
 export const Home = () => {
-  const [scoreLeft, setScoreLeft] = useState(0);
-  const [scoreRight, setScoreRight] = useState(0);
   const [TotalBreaksLeft, setTotalBreaksLeft] = useState(0);
   const [TotalBreaksRight, setTotalBreaksRight] = useState(0);
   const [DryBreakCountLeft, setDryBreakCountLeft] = useState(0);
@@ -46,18 +53,7 @@ export const Home = () => {
   //   setScoreLeft(scoreLeft + 1);
   // };
   // ------------------ Score ----------------------------------
-  const incrementScoreLeft = () => {
-    setScoreLeft(scoreLeft + 1);
-  };
-  const decrementScoreLeft = () => {
-    setScoreLeft(scoreLeft - 1);
-  };
-  const incrementScoreRight = () => {
-    setScoreRight(scoreRight + 1);
-  };
-  const decrementScoreRight = () => {
-    setScoreRight(scoreRight - 1);
-  };
+
   // ----------------TotalBreaks----------------------------
   const incrementTotalBreaksLeft = () => {
     setTotalBreaksLeft(TotalBreaksLeft + 1);
@@ -209,14 +205,14 @@ export const Home = () => {
 
   // ---------------------------- TotalScore -----------------------------
 
-  const aaa = scoreLeft * 9;
-  const bbb = scoreRight * 9;
+  // const aaa = scoreLeft * 9;
+  // const bbb = scoreRight * 9;
 
-  const TotalScore = aaa + bbb;
+  // const TotalScore = aaa + bbb;
 
   // ---------------------------- BallsLeft ---------------------------------
 
-  const BallsLeft = TotalScore - BallspocketedLeft - BallspocketedRight;
+  // const BallsLeft = TotalScore - BallspocketedLeft - BallspocketedRight;
 
   // ---------------------------- Balls pocketed ----------------------------------
 
@@ -318,64 +314,6 @@ export const Home = () => {
     }
   `;
 
-  const EContainer = styled.div`
-    padding: 40px;
-    @media (max-width: 500px) {
-      margin-left: 330px;
-      padding: 80px 0px 40px 50px;
-    }
-  `;
-
-  const button = css`
-    width: 80px;
-    @media (max-width: 500px) {
-      width: 40px;
-    }
-  `;
-  const ETextBox = styled.div`
-    background-color: rgba(11, 434, 332);
-    text-align: center;
-    display: flex;
-    border: 0.5px solid;
-  `;
-  const ETextline = styled.div`
-    text-align: center;
-    font-weight: 600;
-    margin: 6px;
-    width: 240px;
-    @media (max-width: 500px) {
-      margin: 3px;
-      width: 120px;
-    }
-  `;
-  const ENumber = styled.div`
-    text-align: center;
-    width: 80px;
-    border: 0.5px solid;
-    box-sizing: border-box;
-    padding: 5px;
-    @media (max-width: 500px) {
-      padding: 2.5px;
-      width: 80px;
-    }
-  `;
-  const EFlex = styled.div`
-    display: flex;
-    margin: 1px;
-  `;
-  const EFlex2 = styled.div`
-    display: flex;
-    margin: 1px;
-    margin-left: 161px;
-    @media (max-width: 500px) {
-      margin-left: 81px;
-    }
-  `;
-  const TopFlex = styled.div`
-    display: flex;
-    margin: 1px;
-  `;
-
   return (
     <>
       <Center css={vvv} h="100%">
@@ -390,70 +328,21 @@ export const Home = () => {
             <InputForm isRight />
           </TopFlex>
 
-          <EFlex>
-            <WrapItem>
-              <Button
-                onClick={decrementScoreLeft}
-                css={button}
-                colorScheme="red"
-              >
-                -1
-              </Button>
-            </WrapItem>
-            <WrapItem>
-              <Button
-                onClick={incrementScoreLeft}
-                css={button}
-                colorScheme="blue"
-              >
-                +1
-              </Button>
-            </WrapItem>
-            <ENumber></ENumber>
-            <ENumber>{scoreLeft}</ENumber>
-            <ETextBox>
-              <ETextline>Game Score</ETextline>
-            </ETextBox>
-            <ENumber>{scoreRight}</ENumber>
-            <ENumber></ENumber>
-            <WrapItem>
-              <Button
-                onClick={incrementScoreRight}
-                css={button}
-                colorScheme="blue"
-              >
-                +1
-              </Button>
-            </WrapItem>
-            <WrapItem>
-              <Button
-                onClick={decrementScoreRight}
-                css={button}
-                colorScheme="red"
-              >
-                -1
-              </Button>
-            </WrapItem>
-          </EFlex>
+          <GameScore />
 
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementTotalBreaksLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementTotalBreaksLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementTotalBreaksLeft}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{TotalBreaksLeft}</ENumber>
@@ -463,43 +352,39 @@ export const Home = () => {
             <ENumber>{TotalBreaksRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementTotalBreaksRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementTotalBreaksRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementDryBreakCountLeft}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementDryBreakCountLeft}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber>{persentageDryBreakCountLeft || 0}%</ENumber>
             <ENumber>{DryBreakCountLeft}</ENumber>
@@ -509,43 +394,33 @@ export const Home = () => {
             <ENumber>{DryBreakCountRight}</ENumber>
             <ENumber>{persentageDryBreakCountRight || 0}%</ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementDryBreakCountRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementDryBreakCountRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementScratchLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementScratchLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={incrementScratchLeft}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementScratchLeft} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber>{persentageScratchLeft || 0}%</ENumber>
             <ENumber>{ScratchLeft}</ENumber>
@@ -555,42 +430,29 @@ export const Home = () => {
             <ENumber>{ScratchRight}</ENumber>
             <ENumber>{persentageScratchRight || 0}%</ENumber>
             <WrapItem>
-              <Button
-                onClick={incrementScratchRight}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementScratchRight} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={decrementScratchRight}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementScratchRight} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementMadeonBreakLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementMadeonBreakLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
               <WrapItem>
-                <Button
+                <SizedButton
                   onClick={incrementMadeonBreakLeft}
-                  css={button}
                   colorScheme="blue"
                 >
                   +1
-                </Button>
+                </SizedButton>
               </WrapItem>
             </WrapItem>
             <ENumber>{persentageMadeonBreakLeft || 0}%</ENumber>
@@ -601,43 +463,39 @@ export const Home = () => {
             <ENumber>{MadeonBreakRight}</ENumber>
             <ENumber>{persentageMadeonBreakRight || 0}%</ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementMadeonBreakRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementMadeonBreakRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementShotafterBreakLeft}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementShotafterBreakLeft}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber>{persentageShotafterBreakLeft || 0}%</ENumber>
             <ENumber>{ShotafterBreakLeft}</ENumber>
@@ -647,44 +505,37 @@ export const Home = () => {
             <ENumber>{ShotafterBreakRight}</ENumber>
             <ENumber>{persentageShotafterBreakRight || 0}%</ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementShotafterBreakRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementShotafterBreakRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <br />
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementBreakandRunLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementBreakandRunLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementBreakandRunLeft}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber>{persentageBreakandRunLeft || 0}%</ENumber>
             <ENumber>{BreakandRunLeft}</ENumber>
@@ -694,43 +545,39 @@ export const Home = () => {
             <ENumber>{BreakandRunRight}</ENumber>
             <ENumber>{persentageBreakandRunRight || 0}%</ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementBreakandRunRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementBreakandRunRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementConsecutiveBRLeft}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementConsecutiveBRLeft}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{ConsecutiveBRLeft}</ENumber>
@@ -740,44 +587,40 @@ export const Home = () => {
             <ENumber>{ConsecutiveBRRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementConsecutiveBRRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementConsecutiveBRRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <br />
           <EFlex>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementLongestGameWinLeft}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementLongestGameWinLeft}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{LongestGameWinLeft}</ENumber>
@@ -787,22 +630,20 @@ export const Home = () => {
             <ENumber>{LongestGameWinRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementLongestGameWinRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementLongestGameWinRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
           <br />
@@ -816,7 +657,7 @@ export const Home = () => {
             <ENumber></ENumber>
           </EFlex2>
 
-          <EFlex2>
+          {/* <EFlex2>
             <ENumber></ENumber>
             <ENumber>{BallsLeft}</ENumber>
             <ETextBox>
@@ -824,26 +665,24 @@ export const Home = () => {
             </ETextBox>
             <ENumber>{BallsLeft}</ENumber>
             <ENumber></ENumber>
-          </EFlex2>
+          </EFlex2> */}
 
           <EFlex>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementBallspocketedLeft}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementBallspocketedLeft}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{BallspocketedLeft}</ENumber>
@@ -853,44 +692,34 @@ export const Home = () => {
             <ENumber>{BallspocketedRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={incrementBallspocketedRight}
-                css={button}
                 colorScheme="blue"
               >
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
+              <SizedButton
                 onClick={decrementBallspocketedRight}
-                css={button}
                 colorScheme="red"
               >
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <br />
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementMissedLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementMissedLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={incrementMissedLeft}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementMissedLeft} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{MissedLeft}</ENumber>
@@ -900,43 +729,27 @@ export const Home = () => {
             <ENumber>{MissedRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
-                onClick={incrementMissedRight}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementMissedRight} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={decrementMissedRight}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementMissedRight} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementUnforcedLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementUnforcedLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={incrementUnforcedLeft}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementUnforcedLeft} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{UnforcedLeft}</ENumber>
@@ -946,43 +759,27 @@ export const Home = () => {
             <ENumber>{UnforcedRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
-                onClick={incrementUnforcedRight}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementUnforcedRight} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={decrementUnforcedRight}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementUnforcedRight} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementSafetyLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementSafetyLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={incrementSafetyLeft}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementSafetyLeft} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{SafetyLeft}</ENumber>
@@ -992,43 +789,27 @@ export const Home = () => {
             <ENumber>{SafetyRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
-                onClick={incrementSafetyRight}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementSafetyRight} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={decrementSafetyRight}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementSafetyRight} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
           <EFlex>
             <WrapItem>
-              <Button
-                onClick={decrementKickingLeft}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementKickingLeft} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={incrementKickingLeft}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementKickingLeft} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <ENumber></ENumber>
             <ENumber>{KickingLeft}</ENumber>
@@ -1038,22 +819,14 @@ export const Home = () => {
             <ENumber>{KickingRight}</ENumber>
             <ENumber></ENumber>
             <WrapItem>
-              <Button
-                onClick={incrementKickingRight}
-                css={button}
-                colorScheme="blue"
-              >
+              <SizedButton onClick={incrementKickingRight} colorScheme="blue">
                 +1
-              </Button>
+              </SizedButton>
             </WrapItem>
             <WrapItem>
-              <Button
-                onClick={decrementKickingRight}
-                css={button}
-                colorScheme="red"
-              >
+              <SizedButton onClick={decrementKickingRight} colorScheme="red">
                 -1
-              </Button>
+              </SizedButton>
             </WrapItem>
           </EFlex>
 
