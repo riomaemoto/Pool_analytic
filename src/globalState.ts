@@ -19,3 +19,11 @@ export const scoreRightState = atom<number>({
   default: 0,
 });
 // const [scoreLeft, setScoreLeft] = useState(0);
+export const totalBreaksLeftState = atom<number>({
+  key: "scoreLeftState",
+  default: 0,
+});
+export const totalBreaksRightState = atom<number>({
+  key: "scoreRightState",
+  default: 0,
+});

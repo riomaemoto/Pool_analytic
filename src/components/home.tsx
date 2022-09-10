@@ -1,8 +1,9 @@
 import { Center, WrapItem } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useState } from "react";
+import { Break } from "./Break";
 import { GameScore } from "./game_score";
-import { InputForm } from "./input_form";
+import { TotalBreak } from "./total_break";
 import {
   EContainer,
   EFlex,
@@ -11,7 +12,6 @@ import {
   ETextBox,
   ETextline,
   SizedButton,
-  TopFlex,
 } from "./styles";
 
 export const Home = () => {
@@ -318,57 +318,9 @@ export const Home = () => {
     <>
       <Center css={vvv} h="100%">
         <EContainer>
-          <TopFlex>
-            <InputForm />
-            <ENumber>First breaks</ENumber>
-            <ETextBox>
-              <ETextline>Break</ETextline>
-            </ETextBox>
-            <ENumber>Odd breaks</ENumber>
-            <InputForm isRight />
-          </TopFlex>
-
+          <Break />
           <GameScore />
-
-          <EFlex>
-            <WrapItem>
-              <SizedButton onClick={decrementTotalBreaksLeft} colorScheme="red">
-                -1
-              </SizedButton>
-            </WrapItem>
-            <WrapItem>
-              <SizedButton
-                onClick={incrementTotalBreaksLeft}
-                colorScheme="blue"
-              >
-                +1
-              </SizedButton>
-            </WrapItem>
-            <ENumber></ENumber>
-            <ENumber>{TotalBreaksLeft}</ENumber>
-            <ETextBox>
-              <ETextline>Total Break</ETextline>
-            </ETextBox>
-            <ENumber>{TotalBreaksRight}</ENumber>
-            <ENumber></ENumber>
-            <WrapItem>
-              <SizedButton
-                onClick={incrementTotalBreaksRight}
-                colorScheme="blue"
-              >
-                +1
-              </SizedButton>
-            </WrapItem>
-            <WrapItem>
-              <SizedButton
-                onClick={decrementTotalBreaksRight}
-                colorScheme="red"
-              >
-                -1
-              </SizedButton>
-            </WrapItem>
-          </EFlex>
-
+          <TotalBreak />
           <EFlex>
             <WrapItem>
               <SizedButton
