@@ -8,6 +8,10 @@ export const ECenter = styled(Center)`
   }
 `;
 
+export const InputBox = styled.input`
+  border: 0.5px solid;
+`;
+
 export const SizedButton = styled(Button)`
   width: 80px;
   height: 65px;
@@ -77,7 +81,7 @@ export const EFlex2 = styled.div`
 export const TopFlex = styled.div`
   display: flex;
   margin-left: 64px;
-  border: 1px solid;
+
   @media (max-width: 500px) {
     display: flex;
     margin-left: 3px;
