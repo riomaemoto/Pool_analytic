@@ -1,13 +1,14 @@
-import { Center, WrapItem } from "@chakra-ui/react";
-import { css } from "@emotion/react";
+import { WrapItem } from "@chakra-ui/react";
 import { useState } from "react";
 import { Break } from "./Break";
 import { GameScore } from "./game_score";
 import { TotalBreak } from "./total_break";
 import {
+  ECenter,
   EContainer,
   EFlex,
-  EFlex2,
+  EFlex3,
+  EFlexBottom,
   ENumber,
   ETextBox,
   ETextline,
@@ -260,16 +261,9 @@ export const Home = () => {
 
   // ---------------------------- CSS -----------------------------
 
-  const vvv = css`
-    background-color: rgba(211, 274, 80, 0.2);
-    @media (max-width: 500px) {
-      background-color: white;
-    }
-  `;
-
   return (
     <>
-      <Center css={vvv} h="100%">
+      <ECenter>
         <EContainer>
           <Break />
           <GameScore />
@@ -511,7 +505,7 @@ export const Home = () => {
             </WrapItem>
           </EFlex>
           <br />
-          <EFlex2>
+          <EFlex3>
             <ENumber></ENumber>
             <ENumber></ENumber>
             <ETextBox>
@@ -519,7 +513,7 @@ export const Home = () => {
             </ETextBox>
             <ENumber></ENumber>
             <ENumber></ENumber>
-          </EFlex2>
+          </EFlex3>
 
           {/* <EFlex2>
             <ENumber></ENumber>
@@ -694,17 +688,17 @@ export const Home = () => {
             </WrapItem>
           </EFlex>
 
-          <EFlex2>
+          <EFlexBottom>
             <ENumber></ENumber>
             <ENumber>{PersentageACCUStatLeft || 0}</ENumber>
             <ETextBox>
-              <ETextline>ACCU-STAT Performance Rate</ETextline>
+              <ETextline>ACCU-STAT</ETextline>
             </ETextBox>
             <ENumber>{PersentageACCUStatRight || 0}</ENumber>
             <ENumber></ENumber>
-          </EFlex2>
+          </EFlexBottom>
         </EContainer>
-      </Center>
+      </ECenter>
     </>
   );
 };

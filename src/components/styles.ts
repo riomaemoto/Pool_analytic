@@ -1,18 +1,25 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Center } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+
+export const ECenter = styled(Center)`
+  background-color: rgba(211, 274, 80, 0.2);
+  @media (max-width: 500px) {
+    background-color: white;
+  }
+`;
 
 export const SizedButton = styled(Button)`
   width: 80px;
   @media (max-width: 500px) {
-    width: 40px;
+    width: 60px;
   }
 `;
 
 export const EContainer = styled.div`
   padding: 40px;
   @media (max-width: 500px) {
-    margin-left: 330px;
-    padding: 80px 0px 40px 50px;
+    margin-left: 310px;
+    padding: 80px 40px 40px 0px;
   }
 `;
 
@@ -21,15 +28,18 @@ export const ETextBox = styled.div`
   text-align: center;
   display: flex;
   border: 0.5px solid;
+  height: 65px;
 `;
 export const ETextline = styled.div`
   text-align: center;
   font-weight: 600;
-  margin: 6px;
   width: 240px;
   @media (max-width: 500px) {
-    margin: 3px;
+    height: 40px;
+    align-items: center;
+    text-align: center;
     width: 120px;
+    padding-top: 12px;
   }
 `;
 export const ENumber = styled.div`
@@ -40,13 +50,18 @@ export const ENumber = styled.div`
   padding: 5px;
   @media (max-width: 500px) {
     padding: 2.5px;
-    width: 80px;
+    width: 60px;
+    padding-top: 8px;
+    height: 65px;
   }
 `;
 export const EFlex = styled.div`
   display: flex;
   margin: 1px;
+  @media (max-width: 500px) {
+  }
 `;
+
 export const EFlex2 = styled.div`
   display: flex;
   margin: 1px;
@@ -57,10 +72,30 @@ export const EFlex2 = styled.div`
 `;
 export const TopFlex = styled.div`
   display: flex;
-  margin: 1px;
   margin-left: 64px;
+  border: 1px solid;
   @media (max-width: 500px) {
     display: flex;
-    margin: 1px;
+    margin-left: 3px;
+    height: 68px;
+  }
+`;
+
+export const EFlex3 = styled.div`
+  display: flex;
+  margin: 1px;
+  margin-left: 161px;
+  @media (max-width: 500px) {
+    margin-left: 121px;
+  }
+`;
+
+export const EFlexBottom = styled.div`
+  display: flex;
+  margin: 1px;
+  margin-left: 161px;
+  @media (max-width: 500px) {
+    margin-left: 121px;
+    height: 60px;
   }
 `;

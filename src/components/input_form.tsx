@@ -29,6 +29,7 @@ export const InputForm: FC<Props> = ({ isRight }) => {
       className="inputText"
       id="name"
       name="name"
+      placeholder="   Full Name"
       value={isRight ? rightGetter : leftGetter}
       onChange={handleChange}
     />
