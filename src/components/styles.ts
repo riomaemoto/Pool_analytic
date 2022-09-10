@@ -81,7 +81,7 @@ export const EFlex2 = styled.div`
 `;
 export const TopFlex = styled.div`
   display: flex;
-  margin-left: 64px;
+  margin-left: 70px;
   @media (max-width: 500px) {
     display: flex;
     height: 68px;
