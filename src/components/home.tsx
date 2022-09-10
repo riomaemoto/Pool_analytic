@@ -13,12 +13,10 @@ import {
   ETextline,
   SizedButton,
 } from "./styles";
+import { totalBreaksLeftState, totalBreaksRightState } from "../globalState";
+import { useRecoilValue } from "recoil";
 
 export const Home = () => {
-  const [TotalBreaksLeft, setTotalBreaksLeft] = useState(0);
-  const [TotalBreaksRight, setTotalBreaksRight] = useState(0);
-  const [DryBreakCountLeft, setDryBreakCountLeft] = useState(0);
-  const [DryBreakCountRight, setDryBreakCountRight] = useState(0);
   const [ScratchLeft, setScratchLeft] = useState(0);
   const [ScratchRight, setScratchRight] = useState(0);
   const [MadeonBreakLeft, setMadeonBreakLeft] = useState(0);
@@ -42,53 +40,8 @@ export const Home = () => {
   const [KickingLeft, setKickingLeft] = useState(0);
   const [KickingRight, setKickingRight] = useState(0);
 
-  // ------------------ Input Name ----------------------------------
-  // const ShowNameLeft = () => {
-  //   setInputNameLeft(InputNameLeft);
-  // };
-
-  // const InputNameLeft = LeftName;
-
-  // const incrementScoreLeft = () => {
-  //   setScoreLeft(scoreLeft + 1);
-  // };
-  // ------------------ Score ----------------------------------
-
-  // ----------------TotalBreaks----------------------------
-  const incrementTotalBreaksLeft = () => {
-    setTotalBreaksLeft(TotalBreaksLeft + 1);
-  };
-  const decrementTotalBreaksLeft = () => {
-    setTotalBreaksLeft(TotalBreaksLeft - 1);
-  };
-  const incrementTotalBreaksRight = () => {
-    setTotalBreaksRight(TotalBreaksRight + 1);
-  };
-  const decrementTotalBreaksRight = () => {
-    setTotalBreaksRight(TotalBreaksRight - 1);
-  };
-
-  // ----------------DryBreakCount----------------------------
-  const incrementDryBreakCountLeft = () => {
-    setDryBreakCountLeft(DryBreakCountLeft + 1);
-  };
-  const decrementDryBreakCountLeft = () => {
-    setDryBreakCountLeft(DryBreakCountLeft - 1);
-  };
-  const incrementDryBreakCountRight = () => {
-    setDryBreakCountRight(DryBreakCountRight + 1);
-  };
-  const decrementDryBreakCountRight = () => {
-    setDryBreakCountRight(DryBreakCountRight - 1);
-  };
-
-  const persentageDryBreakCountLeft = Math.round(
-    (DryBreakCountLeft / TotalBreaksLeft) * 100
-  );
-
-  const persentageDryBreakCountRight = Math.round(
-    (DryBreakCountRight / TotalBreaksRight) * 100
-  );
+  const TotalBreaksLeft = useRecoilValue(totalBreaksLeftState);
+  const TotalBreaksRight = useRecoilValue(totalBreaksRightState);
 
   // ----------------------------Scratch on break------------------
   const incrementScratchLeft = () => {
@@ -321,47 +274,6 @@ export const Home = () => {
           <Break />
           <GameScore />
           <TotalBreak />
-          <EFlex>
-            <WrapItem>
-              <SizedButton
-                onClick={decrementDryBreakCountLeft}
-                colorScheme="red"
-              >
-                -1
-              </SizedButton>
-            </WrapItem>
-            <WrapItem>
-              <SizedButton
-                onClick={incrementDryBreakCountLeft}
-                colorScheme="blue"
-              >
-                +1
-              </SizedButton>
-            </WrapItem>
-            <ENumber>{persentageDryBreakCountLeft || 0}%</ENumber>
-            <ENumber>{DryBreakCountLeft}</ENumber>
-            <ETextBox>
-              <ETextline>Dry Breaks</ETextline>
-            </ETextBox>
-            <ENumber>{DryBreakCountRight}</ENumber>
-            <ENumber>{persentageDryBreakCountRight || 0}%</ENumber>
-            <WrapItem>
-              <SizedButton
-                onClick={incrementDryBreakCountRight}
-                colorScheme="blue"
-              >
-                +1
-              </SizedButton>
-            </WrapItem>
-            <WrapItem>
-              <SizedButton
-                onClick={decrementDryBreakCountRight}
-                colorScheme="red"
-              >
-                -1
-              </SizedButton>
-            </WrapItem>
-          </EFlex>
 
           <EFlex>
             <WrapItem>
