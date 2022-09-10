@@ -10,6 +10,8 @@ export const ECenter = styled(Center)`
 
 export const SizedButton = styled(Button)`
   width: 80px;
+  height: 65px;
+
   @media (max-width: 500px) {
     width: 60px;
     height: 65px;
