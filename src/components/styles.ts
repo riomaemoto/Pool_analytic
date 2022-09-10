@@ -12,6 +12,8 @@ export const SizedButton = styled(Button)`
   width: 80px;
   @media (max-width: 500px) {
     width: 60px;
+    height: 65px;
+    border: 1px solid;
   }
 `;
 
