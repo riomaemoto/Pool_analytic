@@ -76,7 +76,7 @@ export const EFlex2 = styled.div`
   margin: 1px;
   margin-left: 161px;
   @media (max-width: 500px) {
-    margin-left: 81px;
+    margin-left: 121px;
   }
 `;
 export const TopFlex = styled.div`
