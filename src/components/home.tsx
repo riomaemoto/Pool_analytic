@@ -2,7 +2,7 @@ import { Center, WrapItem } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Button } from "@chakra-ui/react";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 export const Home = () => {
   const [InputValueLeft, setInputValueLeft] = useState("");
@@ -325,7 +325,7 @@ export const Home = () => {
   const EContainer = styled.div`
     padding: 40px;
     @media (max-width: 500px) {
-      margin-left: 240px;
+      margin-left: 260px;
       padding: 80px 30px 40px 50px;
     }
   `;
@@ -383,8 +383,15 @@ export const Home = () => {
   const handleChangeLeft = (InputValueLeft: ChangeEvent<HTMLInputElement>) => {
     setInputValueLeft(InputValueLeft.target.value);
   };
-  const handleChangeRight = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValueRight(e.target.value);
+
+  const handleChangeRight = (
+    InputValueRight: ChangeEvent<HTMLInputElement>
+  ) => {
+    setInputValueRight(InputValueRight.target.value);
+  };
+
+  const handleSubmit = (InputValueLeft: FormEvent<HTMLFormElement>) => {
+    InputValueLeft.preventDefault();
   };
 
   return (
@@ -392,12 +399,14 @@ export const Home = () => {
       <Center css={vvv} h="100%">
         <EContainer>
           <TopFlex>
-            <input
-              value={InputValueLeft}
-              type="text"
-              onChange={(e) => handleChangeLeft(e)}
-              className="inputText"
-            />
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <input
+                value={InputValueLeft}
+                type="text"
+                onChange={(InputValueLeft) => handleChangeLeft(InputValueLeft)}
+                className="inputText"
+              />
+            </form>
             <ENumber>First breaks</ENumber>
             <ETextBox>
               <ETextline>Break</ETextline>
