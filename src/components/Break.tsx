@@ -7,7 +7,7 @@ export const Break = () => {
       <InputForm />
       <ENumber>First breaks</ENumber>
       <ETextBox>
-        <ETextline>Hi</ETextline>
+        <ETextline>Break</ETextline>
       </ETextBox>
       <ENumber>Odd breaks</ENumber>
       <InputForm isRight />
