@@ -85,8 +85,7 @@ export const TopFlex = styled.div`
   @media (max-width: 500px) {
     display: flex;
     height: 68px;
-    width: 600px;
-    margin-left: -20px;
+    margin-left: 0px;
   }
 `;
 
