@@ -10,7 +10,7 @@ import {
   SafeteyErrorsRightState,
   UnforcedErrorsLeftState,
   UnforcedErrorsRightState,
-} from "../globalState";
+} from "../global/globalState";
 import { EFlexBottom, ENumber, ETextBox, ETextline } from "./styles";
 
 export const AccuStat = () => {

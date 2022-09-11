@@ -4,7 +4,7 @@ import {
   BallsPocketedRightState,
   scoreLeftState,
   scoreRightState,
-} from "../globalState";
+} from "../global/globalState";
 import { EFlex2, ENumber, ETextBox, ETextline } from "./styles";
 
 export const TotalScore = () => {

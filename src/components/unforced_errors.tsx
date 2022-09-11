@@ -3,7 +3,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   UnforcedErrorsLeftState,
   UnforcedErrorsRightState,
-} from "../globalState";
+} from "../global/globalState";
 import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
 
 export const UnforcedErrors = () => {

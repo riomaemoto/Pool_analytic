@@ -1,6 +1,9 @@
 import { WrapItem } from "@chakra-ui/react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { BallsMissedLeftState, BallsMissedRightState } from "../globalState";
+import {
+  BallsMissedLeftState,
+  BallsMissedRightState,
+} from "../global/globalState";
 import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
 
 export const BallsMissed = () => {

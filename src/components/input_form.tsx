@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { leftInput, rightInput } from "../globalState";
+import { leftInput, rightInput } from "../global/globalState";
 import { InputBox } from "./styles";
 
 type Props = {
