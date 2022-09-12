@@ -48,9 +48,9 @@ export const CommonItems: FC<Props> = ({
     setRight(right - 1);
   };
 
-  const PercentageLeft = Math.round((left / totalLeft) * 100);
+  const PercentageLeft = Math.round((left / totalLeft) * 100) || 0;
 
-  const PercentageRight = Math.round((right / totalRight) * 100);
+  const PercentageRight = Math.round((right / totalRight) * 100) || 0;
   return (
     <>
       <EFlex>
@@ -64,13 +64,13 @@ export const CommonItems: FC<Props> = ({
             +1
           </SizedButton>
         </WrapItem>
-        <ENumber>{hasPercentage ? PercentageLeft + "%" : 0}</ENumber>
+        <ENumber>{hasPercentage && PercentageLeft + "%"}</ENumber>
         <ENumber>{left}</ENumber>
         <ETextBox>
           <ETextline>{title}</ETextline>
         </ETextBox>
         <ENumber>{right}</ENumber>
-        <ENumber>{hasPercentage ? PercentageRight + "%" : 0}</ENumber>
+        <ENumber>{hasPercentage && PercentageRight + "%"}</ENumber>
         <WrapItem>
           <SizedButton onClick={incrementRight} colorScheme="blue">
             +1
