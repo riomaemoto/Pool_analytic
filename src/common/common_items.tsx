@@ -64,13 +64,13 @@ export const CommonItems: FC<Props> = ({
             +1
           </SizedButton>
         </WrapItem>
-        <ENumber>{hasPercentage && PercentageLeft + "%"}</ENumber>
+        <ENumber>{hasPercentage ? PercentageLeft + "%" : 0}</ENumber>
         <ENumber>{left}</ENumber>
         <ETextBox>
           <ETextline>{title}</ETextline>
         </ETextBox>
         <ENumber>{right}</ENumber>
-        <ENumber>{hasPercentage && PercentageRight + "%"}</ENumber>
+        <ENumber>{hasPercentage ? PercentageRight + "%" : 0}</ENumber>
         <WrapItem>
           <SizedButton onClick={incrementRight} colorScheme="blue">
             +1
