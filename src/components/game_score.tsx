@@ -1,7 +1,13 @@
 import { WrapItem } from "@chakra-ui/react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { scoreLeftState, scoreRightState } from "../global/globalState";
-import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
+import {
+  EFlex,
+  ENumber,
+  ETextBox,
+  ETextline,
+  SizedButton,
+} from "../common/styles";
 
 export const GameScore = () => {
   // getter

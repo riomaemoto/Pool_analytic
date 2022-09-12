@@ -1,5 +1,5 @@
 import { InputForm } from "./input_form";
-import { ENumber, ETextBox, ETextline, TopFlex } from "./styles";
+import { ENumber, ETextBox, ETextline, TopFlex } from "../common/styles";
 
 export const Break = () => {
   return (

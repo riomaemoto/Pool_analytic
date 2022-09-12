@@ -5,7 +5,7 @@ import {
   scoreLeftState,
   scoreRightState,
 } from "../global/globalState";
-import { EFlex2, ENumber, ETextBox, ETextline } from "./styles";
+import { EFlex2, ENumber, ETextBox, ETextline } from "../common/styles";
 
 export const TotalScore = () => {
   // getter

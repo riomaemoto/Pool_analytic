@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { leftInput, rightInput } from "../global/globalState";
-import { InputBox } from "./styles";
+import { InputBox } from "../common/styles";
 
 type Props = {
   isRight?: boolean;

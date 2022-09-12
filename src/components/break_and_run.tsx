@@ -6,7 +6,13 @@ import {
   totalBreaksLeftState,
   totalBreaksRightState,
 } from "../global/globalState";
-import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
+import {
+  EFlex,
+  ENumber,
+  ETextBox,
+  ETextline,
+  SizedButton,
+} from "../common/styles";
 
 export const BreakandRun = () => {
   const left = useRecoilValue(BreakandRunLeftState);
@@ -31,9 +37,9 @@ export const BreakandRun = () => {
     setRight(right - 1);
   };
 
-  const persentageLeft = Math.round((left / totalLeft) * 100);
+  const PercentageLeft = Math.round((left / totalLeft) * 100);
 
-  const persentageRight = Math.round((right / totalRight) * 100);
+  const PercentageRight = Math.round((right / totalRight) * 100);
 
   return (
     <>
@@ -48,13 +54,13 @@ export const BreakandRun = () => {
             +1
           </SizedButton>
         </WrapItem>
-        <ENumber>{persentageLeft || 0}%</ENumber>
+        <ENumber>{PercentageLeft || 0}%</ENumber>
         <ENumber>{left}</ENumber>
         <ETextBox>
           <ETextline>Break and Run</ETextline>
         </ETextBox>
         <ENumber>{right}</ENumber>
-        <ENumber>{persentageRight || 0}%</ENumber>
+        <ENumber>{PercentageRight || 0}%</ENumber>
         <WrapItem>
           <SizedButton onClick={incrementRight} colorScheme="blue">
             +1

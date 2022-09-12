@@ -4,7 +4,13 @@ import {
   KickingErrorsLeftState,
   KickingErrorsRightState,
 } from "../global/globalState";
-import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
+import {
+  EFlex,
+  ENumber,
+  ETextBox,
+  ETextline,
+  SizedButton,
+} from "../common/styles";
 
 export const KickingErrors = () => {
   // getter

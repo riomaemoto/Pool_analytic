@@ -4,7 +4,13 @@ import {
   BallsMissedLeftState,
   BallsMissedRightState,
 } from "../global/globalState";
-import { EFlex, ENumber, ETextBox, ETextline, SizedButton } from "./styles";
+import {
+  EFlex,
+  ENumber,
+  ETextBox,
+  ETextline,
+  SizedButton,
+} from "../common/styles";
 
 export const BallsMissed = () => {
   // getter
@@ -42,7 +48,7 @@ export const BallsMissed = () => {
       <ENumber></ENumber>
       <ENumber>{left}</ENumber>
       <ETextBox>
-        <ETextline>Balls Pocketed</ETextline>
+        <ETextline>Balls Missed</ETextline>
       </ETextBox>
       <ENumber>{right}</ENumber>
       <ENumber></ENumber>

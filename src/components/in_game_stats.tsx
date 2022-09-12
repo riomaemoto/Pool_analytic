@@ -1,4 +1,4 @@
-import { EFlex3, ENumber, ETextBox, ETextline } from "./styles";
+import { EFlex3, ENumber, ETextBox, ETextline } from "../common/styles";
 
 export const InGameStats = () => {
   return (

@@ -1,11 +1,6 @@
 import { WrapItem } from "@chakra-ui/react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  ScratchLeftState,
-  ScratcRightState,
-  totalBreaksLeftState,
-  totalBreaksRightState,
-} from "../global/globalState";
+import { FC } from "react";
+import { RecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   EFlex,
   ENumber,
@@ -13,16 +8,32 @@ import {
   ETextline,
   SizedButton,
 } from "../common/styles";
+import {
+  totalBreaksLeftState,
+  totalBreaksRightState,
+} from "../global/globalState";
 
-export const ScratchOnBreak = () => {
-  const left = useRecoilValue(ScratchLeftState);
-  const right = useRecoilValue(ScratcRightState);
+type Props = {
+  title: string;
+  leftState: RecoilState<number>;
+  rightState: RecoilState<number>;
+  hasPercentage: boolean;
+};
+
+export const CommonItems: FC<Props> = ({
+  title,
+  leftState,
+  rightState,
+  hasPercentage,
+}) => {
+  const left = useRecoilValue(leftState);
+  const right = useRecoilValue(rightState);
 
   const totalLeft = useRecoilValue(totalBreaksLeftState);
   const totalRight = useRecoilValue(totalBreaksRightState);
 
-  const setLeft = useSetRecoilState(ScratchLeftState);
-  const setRight = useSetRecoilState(ScratcRightState);
+  const setLeft = useSetRecoilState(leftState);
+  const setRight = useSetRecoilState(rightState);
 
   const incrementLeft = () => {
     setLeft(left + 1);
@@ -38,6 +49,7 @@ export const ScratchOnBreak = () => {
   };
 
   const PercentageLeft = Math.round((left / totalLeft) * 100);
+
   const PercentageRight = Math.round((right / totalRight) * 100);
   return (
     <>
@@ -52,13 +64,13 @@ export const ScratchOnBreak = () => {
             +1
           </SizedButton>
         </WrapItem>
-        <ENumber>{PercentageLeft || 0}%</ENumber>
+        <ENumber>{hasPercentage && PercentageLeft + "%"}</ENumber>
         <ENumber>{left}</ENumber>
         <ETextBox>
-          <ETextline>Scratches on Break</ETextline>
+          <ETextline>{title}</ETextline>
         </ETextBox>
         <ENumber>{right}</ENumber>
-        <ENumber>{PercentageRight || 0}%</ENumber>
+        <ENumber>{hasPercentage && PercentageRight + "%"}</ENumber>
         <WrapItem>
           <SizedButton onClick={incrementRight} colorScheme="blue">
             +1
