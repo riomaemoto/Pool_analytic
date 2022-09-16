@@ -6,6 +6,8 @@ import { AccuStat } from "../components/accu_stat";
 import { TotalScore } from "../components/total_score";
 import { ECenter, EContainer } from "../common/styles";
 import { CommonItems } from "../common/common_items";
+import Dialog from "../common/dialog";
+import { useDisclosure } from "@chakra-ui/react";
 import {
   BallMadeOnBreakLeftState,
   BallMadeOnBreakRightState,
@@ -34,6 +36,7 @@ import {
 } from "../global/globalState";
 
 export const Home = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const topStateList = [
     {
       title: "Game Score",
@@ -116,6 +119,7 @@ export const Home = () => {
   ];
   return (
     <>
+      <Dialog onClose={onClose} isOpen={isOpen} />
       <ECenter>
         <EContainer>
           <Break />
@@ -126,6 +130,7 @@ export const Home = () => {
                 leftState={item.left}
                 rightState={item.right}
                 hasPercentage={item.hasPercentage}
+                dialogOpen={onOpen}
               />
             );
           })}
@@ -153,6 +158,7 @@ export const Home = () => {
                 leftState={item.left}
                 rightState={item.right}
                 hasPercentage={item.hasPercentage}
+                dialogOpen={onOpen}
               />
             );
           })}

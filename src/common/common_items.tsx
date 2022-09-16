@@ -11,6 +11,8 @@ import {
 import {
   totalBreaksLeftState,
   totalBreaksRightState,
+  allBreaksCountLeftState,
+  allBreaksCountRightState,
 } from "../global/globalState";
 
 type Props = {
@@ -18,6 +20,7 @@ type Props = {
   leftState: RecoilState<number>;
   rightState: RecoilState<number>;
   hasPercentage: boolean;
+  dialogOpen?: () => void;
 };
 
 export const CommonItems: FC<Props> = ({
@@ -25,9 +28,14 @@ export const CommonItems: FC<Props> = ({
   leftState,
   rightState,
   hasPercentage,
+  dialogOpen,
 }) => {
   const left = useRecoilValue(leftState);
   const right = useRecoilValue(rightState);
+
+  // all break count getter
+  const allBreaksLeft = useRecoilValue(allBreaksCountLeftState);
+  const allBreaksRight = useRecoilValue(allBreaksCountRightState);
 
   const totalLeft = useRecoilValue(totalBreaksLeftState);
   const totalRight = useRecoilValue(totalBreaksRightState);
@@ -36,12 +44,21 @@ export const CommonItems: FC<Props> = ({
   const setRight = useSetRecoilState(rightState);
 
   const incrementLeft = () => {
+    const bool = dialogOpen && hasPercentage && allBreaksLeft >= totalLeft;
+    if (bool) {
+      dialogOpen();
+      return;
+    }
     setLeft(left + 1);
   };
   const decrementLeft = () => {
     setLeft(left - 1);
   };
   const incrementRight = () => {
+    if (dialogOpen && hasPercentage && allBreaksRight >= totalRight) {
+      dialogOpen();
+      return;
+    }
     setRight(right + 1);
   };
   const decrementRight = () => {
