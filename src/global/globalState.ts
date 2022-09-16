@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 
 export const leftInput = atom<string>({
   key: "leftInput",
@@ -131,28 +131,4 @@ export const KickingErrorsLeftState = atom<number>({
 export const KickingErrorsRightState = atom<number>({
   key: "KickingErrorsRightState",
   default: 0,
-});
-
-export const allBreaksCountLeftState = selector<number>({
-  key: "allBreaksCountLeftState",
-  get: ({ get }) => {
-    const dry = get(dryBreakCountLeftState);
-    const scratch = get(ScratchLeftState);
-    const madeOnBreak = get(BallMadeOnBreakLeftState);
-    const shot = get(ShotAfterBreakLeftState);
-    const consecutive = get(ConsecutiveBreakandRunLeftState);
-    return dry + scratch + madeOnBreak + shot + consecutive;
-  },
-});
-
-export const allBreaksCountRightState = selector<number>({
-  key: "allBreaksCountRightState",
-  get: ({ get }) => {
-    const dry = get(dryBreakCountRightState);
-    const scratch = get(ScratcRightState);
-    const madeOnBreak = get(BallMadeOnBreakRightState);
-    const shot = get(ShotAfterBreakRightState);
-    const consecutive = get(ConsecutiveBreakandRunRightState);
-    return dry + scratch + madeOnBreak + shot + consecutive;
-  },
 });
