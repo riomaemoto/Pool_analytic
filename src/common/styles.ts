@@ -11,6 +11,7 @@ export const ECenter = styled(Center)`
 export const InputBox = styled.input`
   border: 0.5px solid;
   height: 65px;
+  width: 160px;
 `;
 
 export const SizedButton = styled(Button)`
@@ -84,7 +85,6 @@ export const TopFlex = styled.div`
   margin-left: 64px;
   @media (max-width: 500px) {
     height: 68px;
-    width: 530px;
     margin-left: 4px;
   }
 `;
