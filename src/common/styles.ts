@@ -11,7 +11,7 @@ export const ECenter = styled(Center)`
 export const InputBox = styled.input`
   border: 0.5px solid;
   height: 65px;
-  width: 160px;
+  width: 180px;
 `;
 
 export const SizedButton = styled(Button)`
